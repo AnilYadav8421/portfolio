@@ -18,7 +18,7 @@ const projects = [
             "Full-featured cryptocurrency screener using API, Enabled users to search, sort, and view real-time data and charts.",
         image: "/projects/Project2.png",
         tags: ["React", "React Router", "Context API"],
-        demoUrl: "#",
+        demoUrl: "https://live-crypto-gamma.vercel.app/",
         githubUrl: "https://github.com/AnilYadav8421/LiveCrypto",
     },
     {
