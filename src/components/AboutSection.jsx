@@ -12,7 +12,7 @@ const AboutSection = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div className="space-y-6">
                         <h3 className="text-2xl font-semibold">
-                            Passionate Web Developer
+                            Frontend Developer
                         </h3>
 
                         <p className="text-muted-foreground">
@@ -34,7 +34,7 @@ const AboutSection = () => {
                             </a>
 
                             <a
-                                href="/ANIL_YADAV_Resume.pdf"
+                                href="/Anil_Yadav_Resume.pdf"
                                 className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
                             >
                                 Download CV
