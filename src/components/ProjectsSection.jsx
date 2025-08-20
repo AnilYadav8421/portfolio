@@ -33,6 +33,16 @@ const projects = [
     },
     {
         id: 4,
+        title: "Car Rental App",
+        description:
+            "A fully responsive web app, with smooth animations, include features such as dynamic car listing search & Filtering.",
+        image: "/projects/cr-rent.png",
+        tags: ["React", "Tailwind CSS", "lucid-react"],
+        demoUrl: "https://car-rental-omega-gold.vercel.app/",
+        githubUrl: "https://github.com/AnilYadav8421/Car_Rental",
+    },
+    {
+        id: 5,
         title: "Tinder Clone",
         description:
             "A responsive website with smooth animations, dynamic UI components, and a contact form integrated for direct inquiries.",
