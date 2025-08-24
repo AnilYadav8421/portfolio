@@ -1,4 +1,3 @@
-import React from 'react'
 import ThemeToggle from '../components/ThemeToggle'
 import StarBackground from '../components/StarBackground'
 import Navbar from '../components/Navbar'
@@ -8,6 +7,8 @@ import SkillsSection from '../components/SkillsSection'
 import ProjectsSection from '../components/ProjectsSection'
 import ContactSection from '../components/ContactSection'
 import Footer from '../components/Footer'
+import EducationSection from '../components/EducationSection'
+import ExperienceSection from '../components/ExperienceSection'
 
 const Home = () => {
     return (
@@ -19,6 +20,8 @@ const Home = () => {
             <main>
                 <HeroSection />
                 <AboutSection />
+                <ExperienceSection />
+                <EducationSection />
                 <SkillsSection />
                 <ProjectsSection />
                 <ContactSection />
