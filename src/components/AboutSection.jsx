@@ -10,22 +10,22 @@ const AboutSection = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     {/* Text Content */}
-                    <div className="space-y-6 text-center md:text-left">
-                        <h3 className="text-2xl font-semibold">Frontend Developer</h3>
+                    <div className="space-y-8 text-center md:text-left">
+                        <h3 className="text-3xl md:text-4xl font-semibold">Frontend Developer</h3>
 
-                        <p className="text-muted-foreground">
+                        <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                             I specialize in building responsive, accessible, and high-performance web applications with modern technologies.
                         </p>
 
-                        <p className="text-muted-foreground">
+                        <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                             I’m passionate about crafting elegant solutions to complex problems and continuously learning new technologies to stay at the forefront of the ever-evolving web.
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center md:justify-start">
+                        <div className="flex flex-col sm:flex-row gap-6 pt-6 justify-center md:justify-start">
                             <a
                                 href="#contact"
                                 role="button"
-                                className="cosmic-button focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                                className="cosmic-button px-8 py-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-transform transform hover:scale-105"
                             >
                                 Get In Touch
                             </a>
@@ -34,16 +34,17 @@ const AboutSection = () => {
                                 href="/Anil_Yadav_Resume.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                                className="px-8 py-4 rounded-full border border-primary text-primary text-lg font-medium hover:bg-primary/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                             >
                                 Download CV
                             </a>
                         </div>
                     </div>
 
+
                     {/* Skills / Cards */}
                     <div className="grid grid-cols-1 gap-6">
-                        <article className="gradient-border p-6 card-hover">
+                        <article className="gradient-border p-6 card-hover transition-colors duration-300 hover:bg-purple-100/20">
                             <div className="flex items-start gap-4">
                                 <div className="p-3 rounded-full bg-primary/10">
                                     <Code className="h-6 w-6 text-primary" />
@@ -57,7 +58,7 @@ const AboutSection = () => {
                             </div>
                         </article>
 
-                        <article className="gradient-border p-6 card-hover">
+                        <article className="gradient-border p-6 card-hover transition-colors duration-300 hover:bg-purple-100/20">
                             <div className="flex items-start gap-4">
                                 <div className="p-3 rounded-full bg-primary/10">
                                     <User className="h-6 w-6 text-primary" />
@@ -71,7 +72,7 @@ const AboutSection = () => {
                             </div>
                         </article>
 
-                        <article className="gradient-border p-6 card-hover">
+                        <article className="gradient-border p-6 card-hover transition-colors duration-300 hover:bg-purple-100/20">
                             <div className="flex items-start gap-4">
                                 <div className="p-3 rounded-full bg-primary/10">
                                     <Briefcase className="h-6 w-6 text-primary" />
@@ -85,6 +86,7 @@ const AboutSection = () => {
                             </div>
                         </article>
                     </div>
+
                 </div>
             </div>
         </section>

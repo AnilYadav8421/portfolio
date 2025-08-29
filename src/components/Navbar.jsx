@@ -5,9 +5,6 @@ import { useEffect, useState } from "react";
 const navItems = [
     { name: "Home", href: "#hero" },
     { name: "About", href: "#about" },
-    { name: "Experience", href: "#experience" },
-    { name: "Education", href: "#education" },
-    { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" },
 ];
@@ -20,7 +17,6 @@ const Navbar = () => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 10);
         };
-
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
@@ -30,15 +26,15 @@ const Navbar = () => {
             className={cn(
                 "fixed w-full z-50 transition-all duration-300",
                 isScrolled
-                    ? "py-3 bg-background/80 backdrop-blur-md shadow-md"
-                    : "py-5"
+                    ? "py-8 bg-background/30 backdrop-blur-sm"
+                    : "py-5 bg-transparent"
             )}
         >
             <div className="container mx-auto flex items-center justify-between px-4">
                 {/* Logo */}
                 <a
                     href="#hero"
-                    className="text-xl font-bold text-primary flex items-center z-50"
+                    className="text-2xl font-bold text-primary flex items-center z-50"
                 >
                     <span className="relative z-10">
                         <span className="text-glow text-foreground">Anil</span> Portfolio
@@ -51,7 +47,13 @@ const Navbar = () => {
                         <a
                             key={item.name}
                             href={item.href}
-                            className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                            className="relative text-white text-base md:text-lg lg:text-xl
+                         after:content-[''] after:absolute after:-bottom-1 after:left-0
+                         after:w-0 after:h-1 after:bg-white after:rounded
+                         after:transition-all after:duration-300
+                         hover:after:w-full
+                         hover:after:shadow-[0_0_15px_#fff,0_0_30px_#fff,0_0_45px_#fff,0_0_60px_#fff]
+                         "
                         >
                             {item.name}
                         </a>
@@ -68,27 +70,26 @@ const Navbar = () => {
                 </button>
 
                 {/* Mobile Menu Overlay */}
-                <div
-                    className={cn(
-                        "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center transform transition-all duration-300 md:hidden",
-                        isMenuOpen
-                            ? "opacity-100 scale-100 pointer-events-auto"
-                            : "opacity-0 scale-95 pointer-events-none"
-                    )}
-                >
-                    <div className="flex flex-col space-y-8 text-xl">
-                        {navItems.map((item) => (
-                            <a
-                                key={item.name}
-                                href={item.href}
-                                className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                                onClick={() => setIsMenuOpen(false)}
-                            >
-                                {item.name}
-                            </a>
-                        ))}
+                {isMenuOpen && (
+                    <div className="fixed inset-0 z-40 bg-background/95 backdrop-blur-md flex items-center justify-center md:hidden">
+                        <div className="flex flex-col items-center justify-center space-y-6 w-full max-w-xs px-4">
+                            {navItems.map((item) => (
+                                <a
+                                    key={item.name}
+                                    href={item.href}
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="w-full text-center text-2xl text-foreground/90 py-3 relative
+                             after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-1
+                             after:bg-white after:rounded after:transition-all after:duration-300
+                             hover:after:w-full hover:after:shadow-[0_0_15px_#fff,0_0_30px_#fff,0_0_45px_#fff,0_0_60px_#fff]
+                             hover:text-primary"
+                                >
+                                    {item.name}
+                                </a>
+                            ))}
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
         </nav>
     );

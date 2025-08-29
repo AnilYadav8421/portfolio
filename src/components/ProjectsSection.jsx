@@ -43,6 +43,16 @@ const projects = [
     },
     {
         id: 5,
+        title: "Car-Service",
+        description:
+            "Fully responsive car web app including dynamic car listing, and filtering features.",
+        image: "/projects/bcs.png",
+        tags: ["React", "Tailwind CSS", "Lucide-react"],
+        demoUrl: "https://black-car-service.vercel.app/",
+        githubUrl: "https://github.com/AnilYadav8421/Black-Car-Service",
+    },
+    {
+        id: 6,
         title: "Tinder Clone",
         description:
             "Responsive Tinder clone with smooth animations, dynamic UI components, and a contact form for inquiries.",
