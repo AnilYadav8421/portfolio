@@ -1,5 +1,5 @@
 import { GraduationCap } from "lucide-react";
-import { useInView } from "../hooks/useInView";
+import { motion } from "framer-motion";
 
 const educationData = [
     {
@@ -30,48 +30,70 @@ const educationData = [
     },
 ];
 
-
 const EducationSection = () => {
+    const containerVariants = {
+        hidden: {},
+        visible: { transition: { staggerChildren: 0.3 } },
+    };
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+    };
+
     return (
         <section
             id="education"
-            className="py-24 px-4 relative bg-secondary/30"
+            className="py-20 px-4 sm:py-28 bg-gradient-to-b from-background/50 to-background/10"
         >
             <div className="container mx-auto max-w-5xl">
-                <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+                {/* Section Heading */}
+                <motion.h2
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 text-center"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1 }}
+                >
                     My <span className="text-primary">Education</span>
-                </h2>
+                </motion.h2>
 
-                <div className="relative border-l-2 border-primary/40 ml-4">
-                    {educationData.map((edu, index) => {
-                        const [ref, isInView] = useInView();
-                        return (
-                            <div
-                                key={index}
-                                ref={ref}
-                                className={`mb-10 ml-6 relative transition-all duration-700 ease-out transform ${isInView
-                                    ? "opacity-100 translate-y-0"
-                                    : "opacity-0 translate-y-10"
-                                    }`}
-                                style={{ transitionDelay: `${index * 0.3}s` }}
-                            >
-                                {/* Timeline Point */}
-                                <span className="absolute -left-5 flex items-center justify-center w-4 h-4 rounded-full bg-primary shadow-lg"></span>
+                {/* Timeline */}
+                <motion.div
+                    className="relative border-l-2 border-primary/40 ml-4 sm:ml-6"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={containerVariants}
+                >
+                    {educationData.map((edu, index) => (
+                        <motion.div
+                            key={index}
+                            className="mb-12 ml-6 relative"
+                            variants={cardVariants}
+                        >
+                            {/* Timeline Point */}
+                            <span className="absolute -left-6 mt-20 flex items-center justify-center w-4 h-4 rounded-full bg-primary shadow-lg animate-pulse"></span>
 
-                                {/* Content */}
-                                <div className="bg-card p-6 rounded-lg shadow-md card-hover">
-                                    <h3 className="text-xl font-semibold flex items-center gap-2">
-                                        <GraduationCap className="w-5 h-5 text-primary" />
-                                        {edu.degree}
-                                    </h3>
-                                    <p className="text-muted-foreground">{edu.institute}</p>
-                                    <span className="text-sm text-primary">{edu.duration}</span>
-                                    <p className="mt-2 text-muted-foreground">{edu.description}</p>
-                                </div>
+                            {/* Education Card */}
+                            <div className="bg-card p-6 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-transform duration-300 border border-primary/20">
+                                <h3 className="text-xl sm:text-2xl font-semibold flex items-center gap-3">
+                                    <GraduationCap className="w-5 h-5 text-primary" />
+                                    {edu.degree}
+                                </h3>
+                                <p className="text-sm sm:text-base text-muted-foreground mt-1">
+                                    {edu.institute}
+                                </p>
+                                <span className="text-sm sm:text-base text-primary font-medium">
+                                    {edu.duration}
+                                </span>
+                                <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">
+                                    {edu.description}
+                                </p>
                             </div>
-                        );
-                    })}
-                </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
             </div>
         </section>
     );

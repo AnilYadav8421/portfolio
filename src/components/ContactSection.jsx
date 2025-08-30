@@ -9,6 +9,7 @@ import {
 import { cn } from "../lib/utils";
 import { useToast } from "../hooks/use-toast";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const ContactSection = () => {
     const { toast } = useToast();
@@ -27,22 +28,53 @@ const ContactSection = () => {
         }, 1500);
     };
 
+    const containerVariants = {
+        hidden: {},
+        visible: { transition: { staggerChildren: 0.2 } },
+    };
+
+    const fadeUpVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+    };
+
     return (
-        <section id="contact" className="py-24 px-4 relative bg-secondary/30">
+        <section
+            id="contact"
+            className="py-24 px-4 relative bg-secondary/30"
+        >
             <div className="container mx-auto max-w-5xl">
                 {/* Section Title */}
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+                <motion.h2
+                    className="text-3xl md:text-4xl font-bold mb-4 text-center"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1 }}
+                >
                     Get In <span className="text-primary">Touch</span>
-                </h2>
+                </motion.h2>
 
                 {/* Section Description */}
-                <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+                <motion.p
+                    className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                >
                     Have a project or collaboration in mind? Feel free to reach out — I’m always open to new opportunities.
-                </p>
+                </motion.p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <motion.div
+                    className="grid grid-cols-1 md:grid-cols-2 gap-12"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={containerVariants}
+                >
                     {/* Contact Info */}
-                    <div className="space-y-8">
+                    <motion.div className="space-y-8" variants={fadeUpVariants}>
                         <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
 
                         <div className="space-y-6">
@@ -93,7 +125,7 @@ const ContactSection = () => {
                         {/* Social Links */}
                         <div className="pt-8">
                             <h4 className="font-medium mb-4">Connect With Me</h4>
-                            <div className="flex space-x-4 justify-center">
+                            <div className="flex space-x-4 justify-center md:justify-start">
                                 <a
                                     href="https://www.linkedin.com/in/anil-yadav-3111a9268/"
                                     target="_blank"
@@ -110,14 +142,16 @@ const ContactSection = () => {
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Contact Form */}
-                    <div className="bg-card p-8 rounded-lg shadow-xs">
+                    <motion.div
+                        className="bg-card p-8 rounded-lg shadow-xs"
+                        variants={fadeUpVariants}
+                    >
                         <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
 
                         <form className="space-y-6" onSubmit={handleSubmit}>
-                            {/* Name */}
                             <div>
                                 <label htmlFor="name" className="block text-sm font-medium mb-2">
                                     Your Name
@@ -132,7 +166,6 @@ const ContactSection = () => {
                                 />
                             </div>
 
-                            {/* Email */}
                             <div>
                                 <label htmlFor="email" className="block text-sm font-medium mb-2">
                                     Your Email
@@ -147,7 +180,6 @@ const ContactSection = () => {
                                 />
                             </div>
 
-                            {/* Message */}
                             <div>
                                 <label htmlFor="message" className="block text-sm font-medium mb-2">
                                     Your Message
@@ -172,8 +204,8 @@ const ContactSection = () => {
                                 <Send size={16} />
                             </button>
                         </form>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             </div>
         </section>
     );

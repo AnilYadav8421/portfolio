@@ -1,144 +1,121 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
+import { motion } from "framer-motion";
 
 const projects = [
     {
         id: 1,
         title: "E-commerce Platform",
-        description:
-            "Full-featured e-commerce platform with product browsing, filtering, sorting, and cart management.",
         image: "/projects/Project1.png",
-        tags: ["React", "Tailwind CSS"],
         demoUrl: "https://e-commerce-website-git-main-anils-projects-1753d137.vercel.app/",
         githubUrl: "https://github.com/AnilYadav8421/eCommerce-website",
     },
     {
         id: 2,
         title: "Crypto Screener App",
-        description:
-            "Real-time cryptocurrency screener using APIs. Users can search, sort, and view live data and charts.",
         image: "/projects/Project2.png",
-        tags: ["React", "React Router", "Context API"],
         demoUrl: "https://live-crypto-gamma.vercel.app/",
         githubUrl: "https://github.com/AnilYadav8421/LiveCrypto",
     },
     {
         id: 3,
         title: "Real Estate App",
-        description:
-            "Responsive real estate website with dynamic UI components, smooth animations, and a contact form integration.",
         image: "/projects/Project3.png",
-        tags: ["React", "Tailwind CSS", "Email API"],
         demoUrl: "https://anilyadav8421.github.io/Estate-App/",
         githubUrl: "https://github.com/AnilYadav8421/Estate-App",
     },
     {
         id: 4,
         title: "Car Rental App",
-        description:
-            "Fully responsive car rental web app including dynamic car listing, search, and filtering features.",
         image: "/projects/cr-rent.png",
-        tags: ["React", "Tailwind CSS", "Lucide-react"],
         demoUrl: "https://car-rental-omega-gold.vercel.app/",
         githubUrl: "https://github.com/AnilYadav8421/Car_Rental",
     },
     {
         id: 5,
         title: "Car-Service",
-        description:
-            "Fully responsive car web app including dynamic car listing, and filtering features.",
         image: "/projects/bcs.png",
-        tags: ["React", "Tailwind CSS", "Lucide-react"],
         demoUrl: "https://black-car-service.vercel.app/",
         githubUrl: "https://github.com/AnilYadav8421/Black-Car-Service",
-    },
-    {
-        id: 6,
-        title: "Tinder Clone",
-        description:
-            "Responsive Tinder clone with smooth animations, dynamic UI components, and a contact form for inquiries.",
-        image: "/projects/Project4.png",
-        tags: ["React", "Node.js", "MongoDB"],
-        demoUrl: "#",
-        githubUrl: "https://github.com/AnilYadav8421/Tinder-app",
     },
 ];
 
 const ProjectsSection = () => {
+    // Framer Motion variants
+    const containerVariants = {
+        hidden: {},
+        visible: { transition: { staggerChildren: 0.2 } },
+    };
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+    };
+
     return (
-        <section id="projects" className="py-24 px-4 relative">
+        <section id="projects" className="py-24 px-4 relative bg-background">
             <div className="container mx-auto max-w-5xl">
                 {/* Section Title */}
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+                <motion.h2
+                    className="text-3xl md:text-4xl font-bold mb-12 text-center"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1 }}
+                >
                     Featured <span className="text-primary">Projects</span>
-                </h2>
-
-                {/* Section Description */}
-                <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-                    Here are some of my recent projects, crafted with attention to detail, performance, and seamless user experience.
-                </p>
+                </motion.h2>
 
                 {/* Projects Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <motion.div
+                    className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={containerVariants}
+                >
                     {projects.map((project) => (
-                        <div
+                        <motion.div
                             key={project.id}
-                            className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover hover:scale-105 transition-transform duration-300"
+                            className="group bg-card rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-transform duration-300"
+                            variants={cardVariants}
+                            whileHover={{ scale: 1.03 }}
                         >
                             {/* Project Image */}
-                            <div className="h-48 overflow-hidden">
-                                <img
+                            <div className="h-64 sm:h-80 overflow-hidden">
+                                <motion.img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    className="w-full h-full p-4 object-cover transition-transform duration-300"
+                                    whileHover={{ scale: 1.1 }}
                                     loading="lazy"
                                 />
                             </div>
 
-                            {/* Project Content */}
-                            <div className="p-6">
-                                {/* Tags */}
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                    {project.tags.map((tag) => (
-                                        <span
-                                            key={tag}
-                                            className="px-2 py-1 text-xs font-medium border rounded-full bg-secondary text-secondary-foreground capitalize"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-
-                                {/* Title & Description */}
-                                <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
-                                <p className="text-muted-foreground text-sm mb-4">
-                                    {project.description}
-                                </p>
-
-                                {/* Links */}
-                                <div className="flex justify-between items-center">
-                                    <div className="flex space-x-3">
-                                        <a
-                                            href={project.demoUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                                        >
-                                            <ExternalLink size={20} />
-                                        </a>
-                                        <a
-                                            href={project.githubUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                                        >
-                                            <Github size={20} />
-                                        </a>
-                                    </div>
+                            {/* Project Name & Links */}
+                            <div className="p-4 flex justify-between items-center">
+                                <h3 className="text-lg sm:text-xl font-semibold">{project.title}</h3>
+                                <div className="flex gap-3">
+                                    <a
+                                        href={project.demoUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                                    >
+                                        <ExternalLink size={20} />
+                                    </a>
+                                    <a
+                                        href={project.githubUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                                    >
+                                        <Github size={20} />
+                                    </a>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
 
                 {/* Github Button */}
                 <div className="text-center mt-12">

@@ -1,16 +1,45 @@
 import { Briefcase, Code, User } from "lucide-react";
+import { motion } from "framer-motion";
 
 const AboutSection = () => {
+    // Variants for staggered animation
+    const containerVariants = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.3,
+            },
+        },
+    };
+
+    const fadeUpVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+    };
+
     return (
         <section id="about" className="py-24 px-4 relative">
             <div className="container mx-auto max-w-5xl">
-                <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+                {/* Section Heading */}
+                <motion.h2
+                    className="text-3xl md:text-4xl font-bold mb-12 text-center"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1 }}
+                >
                     About <span className="text-primary">Me</span>
-                </h2>
+                </motion.h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <motion.div
+                    className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={containerVariants}
+                >
                     {/* Text Content */}
-                    <div className="space-y-8 text-center md:text-left">
+                    <motion.div className="space-y-8 text-center md:text-left" variants={fadeUpVariants}>
                         <h3 className="text-3xl md:text-4xl font-semibold">Frontend Developer</h3>
 
                         <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
@@ -39,55 +68,39 @@ const AboutSection = () => {
                                 Download CV
                             </a>
                         </div>
-                    </div>
-
+                    </motion.div>
 
                     {/* Skills / Cards */}
-                    <div className="grid grid-cols-1 gap-6">
-                        <article className="gradient-border p-6 card-hover transition-colors duration-300 hover:bg-purple-100/20">
-                            <div className="flex items-start gap-4">
-                                <div className="p-3 rounded-full bg-primary/10">
-                                    <Code className="h-6 w-6 text-primary" />
+                    <motion.div className="grid grid-cols-1 gap-6" variants={containerVariants}>
+                        {[{
+                            icon: <Code className="h-6 w-6 text-primary" />,
+                            title: "Web Development",
+                            desc: "Creating responsive websites and web applications with modern frameworks."
+                        }, {
+                            icon: <User className="h-6 w-6 text-primary" />,
+                            title: "UI/UX Design",
+                            desc: "Designing intuitive user interfaces and seamless user experiences."
+                        }, {
+                            icon: <Briefcase className="h-6 w-6 text-primary" />,
+                            title: "Project Management",
+                            desc: "Planning, organizing, and managing development tasks effectively using Agile methodologies."
+                        }].map((skill, index) => (
+                            <motion.article
+                                key={index}
+                                className="gradient-border p-6 card-hover transition-colors duration-300 hover:bg-purple-100/20"
+                                variants={fadeUpVariants}
+                            >
+                                <div className="flex items-start gap-4">
+                                    <div className="p-3 rounded-full bg-primary/10">{skill.icon}</div>
+                                    <div>
+                                        <h4 className="font-semibold text-lg">{skill.title}</h4>
+                                        <p className="text-muted-foreground">{skill.desc}</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 className="font-semibold text-lg">Web Development</h4>
-                                    <p className="text-muted-foreground">
-                                        Creating responsive websites and web applications with modern frameworks.
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article className="gradient-border p-6 card-hover transition-colors duration-300 hover:bg-purple-100/20">
-                            <div className="flex items-start gap-4">
-                                <div className="p-3 rounded-full bg-primary/10">
-                                    <User className="h-6 w-6 text-primary" />
-                                </div>
-                                <div>
-                                    <h4 className="font-semibold text-lg">UI/UX Design</h4>
-                                    <p className="text-muted-foreground">
-                                        Designing intuitive user interfaces and seamless user experiences.
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article className="gradient-border p-6 card-hover transition-colors duration-300 hover:bg-purple-100/20">
-                            <div className="flex items-start gap-4">
-                                <div className="p-3 rounded-full bg-primary/10">
-                                    <Briefcase className="h-6 w-6 text-primary" />
-                                </div>
-                                <div>
-                                    <h4 className="font-semibold text-lg">Project Management</h4>
-                                    <p className="text-muted-foreground">
-                                        Planning, organizing, and managing development tasks effectively using Agile methodologies.
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                </div>
+                            </motion.article>
+                        ))}
+                    </motion.div>
+                </motion.div>
             </div>
         </section>
     );

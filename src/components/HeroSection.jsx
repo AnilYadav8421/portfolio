@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 
 const HeroSection = () => {
@@ -7,30 +8,48 @@ const HeroSection = () => {
             className="relative min-h-screen flex flex-col items-center justify-center px-4"
         >
             <div className="container max-w-4xl mx-auto text-center z-10">
-                <div className="space-y-6">
-                    {/* Accessible heading with aria-label */}
-                    <h1
-                        className="text-4xl md:text-8xl font-bold tracking-tight"
+                <motion.div
+                    className="space-y-6"
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                        hidden: {},
+                        visible: {
+                            transition: {
+                                staggerChildren: 0.3,
+                            },
+                        },
+                    }}
+                >
+                    <motion.h1
+                        className="text-3xl md:text-8xl font-bold tracking-tight"
                         aria-label="Hi, I'm Anil Yadav"
+                        variants={{
+                            hidden: { opacity: 0, y: -20 },
+                            visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+                        }}
                     >
-                        <span className="opacity-0 animate-fade-in">Hi, I'm</span>
-                        <span className="text-primary opacity-0 animate-fade-in-delay-1">
-                            {" "}
-                            Anil
-                        </span>
-                        <span className="text-gradient ml-2 opacity-0 animate-fade-in-delay-2">
-                            {" "}
-                            Yadav
-                        </span>
-                    </h1>
+                        <span className="text-white">Hi, I'm</span>
+                        <span className="text-primary ml-2">Anil</span>
+                        <span className="text-gradient ml-2">Yadav</span>
+                    </motion.h1>
 
-                    {/* Intro paragraph with corrected Tailwind class */}
-                    <p className="text-lg md:text-2xl text-muted-foreground max-w-7xl mx-auto opacity-0 animate-fade-in-delay-3">
+                    <motion.p
+                        className="text-lg md:text-xl text-muted-foreground max-w-7xl mx-auto"
+                        variants={{
+                            hidden: { opacity: 0, y: 20 },
+                            visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+                        }}
+                    >
                         I design and develop modern web experiences using cutting-edge technologies. Specializing in front-end development, I create interfaces that are responsive, accessible, and visually engaging.
-                    </p>
+                    </motion.p>
 
-                    {/* CTA button */}
-                    <div className="pt-4 opacity-0 animate-fade-in-delay-4">
+                    <motion.div
+                        variants={{
+                            hidden: { opacity: 0, y: 20 },
+                            visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+                        }}
+                    >
                         <a
                             href="#projects"
                             role="button"
@@ -38,15 +57,19 @@ const HeroSection = () => {
                         >
                             View My Work
                         </a>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             </div>
 
             {/* Scroll indicator */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
+            <motion.div
+                className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+            >
                 <span className="text-lg text-muted-foreground mb-2">Scroll</span>
                 <ArrowDown className="h-7 w-7 text-white" aria-hidden="true" />
-            </div>
+            </motion.div>
         </section>
     );
 };

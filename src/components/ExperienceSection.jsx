@@ -1,9 +1,10 @@
+import { motion } from "framer-motion";
 import { Briefcase } from "lucide-react";
-import { useEffect, useState } from "react";
 
 const experienceData = [
   {
     role: "Frontend Developer Intern",
+    logo: "/projects/nerdtech.png",
     company: "NerdTech Lcc",
     duration: "July 2025 - Present",
     description: [
@@ -11,73 +12,91 @@ const experienceData = [
       "Fetched API data to display products dynamically on the website.",
     ],
   },
-  // Add more experiences here
 ];
 
 const ExperienceSection = () => {
-  const [visibleItems, setVisibleItems] = useState([]);
+  // Variants for staggered container
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.3,
+      },
+    },
+  };
 
-  useEffect(() => {
-    const observers = [];
-    experienceData.forEach((_, index) => {
-      const element = document.getElementById(`exp-${index}`);
-      if (element) {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                setVisibleItems((prev) => [...new Set([...prev, index])]);
-              }
-            });
-          },
-          { threshold: 0.3 }
-        );
-        observer.observe(element);
-        observers.push(observer);
-      }
-    });
-    return () => observers.forEach((o) => o.disconnect());
-  }, []);
+  // Fade-up animation for each card
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
 
   return (
-    <section id="experience" className="py-28 px-4 bg-background">
+    <section id="experience" className="py-20 px-4 sm:py-28 bg-background">
       <div className="container mx-auto max-w-5xl">
-        <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">
+        {/* Section Heading */}
+        <motion.h2
+          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 sm:mb-16 text-center"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+        >
           Work <span className="text-primary">Experience</span>
-        </h2>
+        </motion.h2>
 
-        <div className="relative border-l-2 border-primary/20 ml-6">
+        {/* Experience Cards */}
+        <motion.div
+          className="space-y-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+        >
           {experienceData.map((exp, index) => (
-            <div
+            <motion.div
               key={index}
-              id={`exp-${index}`}
-              className={`mb-16 pl-10 relative transition-all duration-700 ${
-                visibleItems.includes(index)
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-              }`}
+              className="bg-primary/10 border border-border rounded-2xl p-4 sm:p-6 shadow-md hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
+              variants={cardVariants}
             >
-              {/* Timeline Dot */}
-              <span className="absolute -left-5 top-2 w-5 h-5 rounded-full bg-primary shadow-lg"></span>
+              {/* Header: Icon + Title + Company + Duration */}
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-full bg-primary/10 flex-shrink-0">
+                    {exp.logo && (
+                      <img
+                        src={exp.logo}
+                        alt={`${exp.company} logo`}
+                        className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+                      />
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-semibold">{exp.role}</h3>
+                    <p className="text-sm sm:text-base text-muted-foreground">
+                      {exp.company}
+                    </p>
+                  </div>
+                </div>
 
-              {/* Role & Company */}
-              <h3 className="text-2xl md:text-3xl font-semibold flex items-center gap-3 mb-1">
-                <Briefcase className="w-6 h-6 text-primary" />
-                {exp.role} @ {exp.company}
-              </h3>
-
-              {/* Duration */}
-              <span className="text-sm md:text-base text-primary font-medium">{exp.duration}</span>
+                <span className="text-xs sm:text-sm px-3 py-1 rounded-md bg-secondary text-foreground font-medium mt-2 sm:mt-0 border-1 border-gray-700">
+                  {exp.duration}
+                </span>
+              </div>
+              <hr className="mt-3 border-t border-gray-300/40" />
 
               {/* Description */}
-              <ul className="mt-3 list-disc list-inside text-muted-foreground space-y-2 text-base md:text-lg">
-                {exp.description.map((point, i) => (
-                  <li key={i}>{point}</li>
+              <div className="mt-4 text-muted-foreground leading-relaxed space-y-2 text-sm sm:text-base">
+                {exp.description.map((point, idx) => (
+                  <p key={idx} className="flex items-start gap-2">
+                    <span className="mt-2.5 w-2 h-2 bg-primary rounded-full flex-shrink-0"></span>
+                    {point}
+                  </p>
                 ))}
-              </ul>
-            </div>
+              </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
