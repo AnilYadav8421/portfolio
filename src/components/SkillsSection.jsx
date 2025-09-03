@@ -15,13 +15,14 @@ const skills = [
   { name: "VS Code", category: "tools", logo: "/projects/vscode.png" },
 ];
 
-const categories = ["All", "Frontend", "Tools"];
+// Dynamically generate categories from skills
+const categories = ["All", ...new Set(skills.map(skill => skill.category))];
 
 const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filteredSkills = skills.filter(
-    (skill) =>
+    skill =>
       activeCategory.toLowerCase() === "all" ||
       skill.category === activeCategory.toLowerCase()
   );
@@ -32,7 +33,6 @@ const SkillsSection = () => {
     return <Settings className="w-5 h-5 text-primary" />;
   };
 
-  // Framer Motion variants
   const containerVariants = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.1 } },
@@ -50,8 +50,7 @@ const SkillsSection = () => {
         <motion.h2
           className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-center"
           initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
           My <span className="text-primary">Technical Skills</span>
@@ -59,7 +58,7 @@ const SkillsSection = () => {
 
         {/* Category Buttons */}
         <div className="flex flex-wrap justify-center gap-3 mb-8">
-          {categories.map((category) => (
+          {categories.map(category => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
@@ -79,11 +78,10 @@ const SkillsSection = () => {
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          animate="visible"  // use animate instead of whileInView
           variants={containerVariants}
         >
-          {filteredSkills.map((skill) => (
+          {filteredSkills.map(skill => (
             <motion.div
               key={skill.name}
               className="bg-primary/10 border border-border rounded-2xl p-4 shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-3"
