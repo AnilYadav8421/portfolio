@@ -81,7 +81,16 @@ const ProjectsSection = () => {
                             whileHover={{ scale: 1.03 }}
                         >
                             {/* Project Image */}
-                            <div className="h-64 sm:h-80 overflow-hidden">
+                            <div className="w-full aspect-w-16 aspect-h-9 overflow-hidden">
+                                <motion.img
+                                    src={project.image}
+                                    alt={project.title}
+                                    className="w-full h-full object-cover transition-transform duration-300"
+                                    whileHover={{ scale: 1.1 }}
+                                    loading="lazy"
+                                />
+                            </div>
+                            {/* <div className="h-64 sm:h-80 overflow-hidden">
                                 <motion.img
                                     src={project.image}
                                     alt={project.title}
@@ -89,7 +98,7 @@ const ProjectsSection = () => {
                                     whileHover={{ scale: 1.1 }}
                                     loading="lazy"
                                 />
-                            </div>
+                            </div> */}
 
                             {/* Project Name & Links */}
                             <div className="p-4 flex justify-between items-center">
