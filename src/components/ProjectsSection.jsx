@@ -52,7 +52,7 @@ const ProjectsSection = () => {
     };
 
     return (
-        <section id="projects" className="py-24 px-4 relative bg-background">
+        <section id="projects" className="py-24 px-2 relative bg-background">
             <div className="container mx-auto max-w-5xl">
                 {/* Section Title */}
                 <motion.h2

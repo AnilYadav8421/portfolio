@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Briefcase } from "lucide-react";
 
 const experienceData = [
   {
@@ -8,10 +7,13 @@ const experienceData = [
     company: "NerdTech Lcc",
     duration: "July 2025 - Present",
     description: [
-      "Developed a real client-facing jewellery website using React and Tailwind CSS.",
-      "Fetched API data to display products dynamically on the website.",
+      "Built and maintained a Jewellery website for a client using React.js and Tailwind CSS.",
+      "Integrated REST APIs to dynamically fetch and update product data.",
+      "Collaborated with the development team to implement new features, resolve bugs, and enhance UI/UX.",
+      "Used Git for version control and gained hands-on experience in real-world project workflows."
     ],
   },
+  // You can add more experiences here
 ];
 
 const ExperienceSection = () => {
@@ -32,11 +34,11 @@ const ExperienceSection = () => {
   };
 
   return (
-    <section id="experience" className="py-20 px-4 sm:py-28 bg-background">
-      <div className="container mx-auto max-w-5xl">
+    <section id="experience" className="py-16 px-3 sm:px-4 md:py-20 bg-background">
+      <div className="max-w-4xl mx-auto">
         {/* Section Heading */}
         <motion.h2
-          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 sm:mb-16 text-center"
+          className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -47,7 +49,7 @@ const ExperienceSection = () => {
 
         {/* Experience Cards */}
         <motion.div
-          className="space-y-6"
+          className="space-y-4 sm:space-y-6"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -56,40 +58,39 @@ const ExperienceSection = () => {
           {experienceData.map((exp, index) => (
             <motion.div
               key={index}
-              className="bg-primary/10 border border-border rounded-2xl p-4 sm:p-6 shadow-md hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
+              className="bg-primary/10 border border-border rounded-2xl p-3 sm:p-5 shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
               variants={cardVariants}
             >
-              {/* Header: Icon + Title + Company + Duration */}
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-full bg-primary/10 flex-shrink-0">
+              {/* Header: Logo + Role/Company + Duration */}
+              <div className="flex flex-row flex-wrap justify-between items-center gap-2 sm:gap-4">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="p-2 rounded-full bg-primary/10 flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
                     {exp.logo && (
                       <img
                         src={exp.logo}
                         alt={`${exp.company} logo`}
-                        className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+                        className="w-6 h-6 sm:w-8 sm:h-8 object-contain"
                       />
                     )}
                   </div>
                   <div>
-                    <h3 className="text-lg sm:text-xl font-semibold">{exp.role}</h3>
-                    <p className="text-sm sm:text-base text-muted-foreground">
-                      {exp.company}
-                    </p>
+                    <h3 className="text-base sm:text-lg font-semibold">{exp.role}</h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground">{exp.company}</p>
                   </div>
                 </div>
 
-                <span className="text-xs sm:text-sm px-3 py-1 rounded-md bg-secondary text-foreground font-medium mt-2 sm:mt-0 border-1 border-gray-700">
+                <span className="text-xs sm:text-sm px-2 py-1 rounded-md bg-secondary text-foreground font-medium border border-gray-700 mt-2 sm:mt-0">
                   {exp.duration}
                 </span>
               </div>
+
               <hr className="mt-3 border-t border-gray-300/40" />
 
               {/* Description */}
-              <div className="mt-4 text-muted-foreground leading-relaxed space-y-2 text-sm sm:text-base">
+              <div className="mt-4 sm:mt-4 text-muted-foreground leading-relaxed space-y-2 sm:space-y-2 text-sm sm:text-base text-left ">
                 {exp.description.map((point, idx) => (
                   <p key={idx} className="flex items-start gap-2">
-                    <span className="mt-2.5 w-2 h-2 bg-primary rounded-full flex-shrink-0"></span>
+                    <span className="mt-2 w-2 h-2 bg-primary rounded-full flex-shrink-0"></span>
                     {point}
                   </p>
                 ))}
