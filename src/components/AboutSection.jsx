@@ -71,34 +71,35 @@ const AboutSection = () => {
                     </motion.div>
 
                     {/* Skills / Cards */}
-                    {[{
-                        icon: <Code className="h-6 w-6 text-primary" />,
-                        title: "Web Development",
-                        desc: "Creating responsive websites and web applications with modern frameworks."
-                    }, {
-                        icon: <User className="h-6 w-6 text-primary" />,
-                        title: "UI/UX Design",
-                        desc: "Designing intuitive user interfaces and seamless user experiences."
-                    }, {
-                        icon: <Briefcase className="h-6 w-6 text-primary" />,
-                        title: "Project Management",
-                        desc: "Planning, organizing, and managing development tasks effectively using Agile methodologies."
-                    }].map((skill, index) => (
-                        <motion.article
-                            key={index}
-                            className="gradient-border p-6 rounded-2xl card-hover transition-colors duration-300 hover:bg-purple-100/20 shadow-sm"
-                            variants={fadeUpVariants}
-                        >
-                            <div className="flex items-start gap-4">
-                                <div className="p-3 rounded-full bg-primary/10">{skill.icon}</div>
-                                <div>
-                                    <h4 className="font-semibold text-base sm:text-lg">{skill.title}</h4>
-                                    <p className="text-sm sm:text-base text-muted-foreground">{skill.desc}</p>
+                    <motion.div className="grid grid-cols-1 gap-6" variants={containerVariants}>
+                        {[{
+                            icon: <Code className="h-6 w-6 text-primary" />,
+                            title: "Web Development",
+                            desc: "Creating responsive websites and web applications with modern frameworks."
+                        }, {
+                            icon: <User className="h-6 w-6 text-primary" />,
+                            title: "UI/UX Design",
+                            desc: "Designing intuitive user interfaces and seamless user experiences."
+                        }, {
+                            icon: <Briefcase className="h-6 w-6 text-primary" />,
+                            title: "Project Management",
+                            desc: "Planning, organizing, and managing development tasks effectively using Agile methodologies."
+                        }].map((skill, index) => (
+                            <motion.article
+                                key={index}
+                                className="gradient-border p-6 card-hover transition-colors duration-300 hover:bg-purple-100/20"
+                                variants={fadeUpVariants}
+                            >
+                                <div className="flex items-start gap-4">
+                                    <div className="p-3 rounded-full bg-primary/10">{skill.icon}</div>
+                                    <div>
+                                        <h4 className="font-semibold text-lg">{skill.title}</h4>
+                                        <p className="text-muted-foreground">{skill.desc}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </motion.article>
-                    ))}
-
+                            </motion.article>
+                        ))}
+                    </motion.div>
                 </motion.div>
             </div>
         </section>
