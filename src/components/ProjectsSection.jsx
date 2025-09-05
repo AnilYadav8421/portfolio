@@ -90,15 +90,6 @@ const ProjectsSection = () => {
                                     loading="lazy"
                                 />
                             </div>
-                            {/* <div className="h-64 sm:h-80 overflow-hidden">
-                                <motion.img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="w-full h-full p-4 object-cover transition-transform duration-300"
-                                    whileHover={{ scale: 1.1 }}
-                                    loading="lazy"
-                                />
-                            </div> */}
 
                             {/* Project Name & Links */}
                             <div className="p-4 flex justify-between items-center">
