@@ -125,7 +125,7 @@ const ContactSection = () => {
                         {/* Social Links */}
                         <div className="pt-8">
                             <h4 className="font-medium mb-4">Connect With Me</h4>
-                            <div className="flex space-x-4 justify-center md:justify-start">
+                            <div className="flex space-x-4 justify-center md:justify-center">
                                 <a
                                     href="https://www.linkedin.com/in/anil-yadav-3111a9268/"
                                     target="_blank"

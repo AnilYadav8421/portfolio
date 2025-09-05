@@ -81,7 +81,7 @@ const EducationSection = () => {
                                     <GraduationCap className="w-5 h-5 text-primary" />
                                     {edu.degree}
                                 </h3>
-                                <p className="text-sm sm:text-base text-muted-foreground mt-1">
+                                <p className="text-lg sm:text-base text-muted-foreground mt-1">
                                     {edu.institute}
                                 </p>
                                 <span className="text-sm sm:text-base text-primary font-medium">

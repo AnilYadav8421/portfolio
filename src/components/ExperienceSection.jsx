@@ -7,10 +7,10 @@ const experienceData = [
     company: "NerdTech Lcc",
     duration: "July 2025 - Present",
     description: [
-      "Built and maintained a Jewellery website for a client using React.js and Tailwind CSS.",
-      "Integrated REST APIs to dynamically fetch and update product data.",
-      "Collaborated with the development team to implement new features, resolve bugs, and enhance UI/UX.",
-      "Used Git for version control and gained hands-on experience in real-world project workflows."
+      "Built and maintained a client website with React.js and Tailwind CSS.",
+      "Integrated REST APIs for dynamic product data.",
+      "Worked with the team to add features, fix bugs, and improve UI/UX.",
+      "Used Git for version control in collaborative workflows."
     ],
   },
   // You can add more experiences here
