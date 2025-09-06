@@ -1,4 +1,3 @@
-import { GraduationCap } from "lucide-react";
 import { motion } from "framer-motion";
 
 const educationData = [
@@ -8,6 +7,7 @@ const educationData = [
         duration: "2022 - 2024",
         description:
             "Specialized in Computer Applications with a focus on front-end and full-stack development.",
+        logo: "/projects/sandip.jpg",
     },
     {
         degree: "Bachelor of Science",
@@ -15,52 +15,54 @@ const educationData = [
         duration: "2019 - 2022",
         description:
             "Majored in Information Technology, focusing on coding and software development.",
+        logo: "/projects/RYK.jpg",
     },
     {
         degree: "High School",
         institute: "Silver Oak",
         duration: "2017 - 2019",
-        description: "Completed Higher Secondary education in the Science stream.",
+        description:
+            "Completed Higher Secondary education in the Science stream.",
+        logo: "/projects/universal.jpg",
     },
     {
         degree: "School",
         institute: "Fravashi Academy",
         duration: "2007 - 2017",
-        description: "Completed Primary and Secondary education with distinction.",
+        description:
+            "Completed Primary and Secondary education with distinction.",
+        logo: "/projects/fravashi.jpg",
     },
 ];
 
 const EducationSection = () => {
     const containerVariants = {
         hidden: {},
-        visible: { transition: { staggerChildren: 0.3 } },
+        visible: { transition: { staggerChildren: 0.2 } },
     };
 
-    const cardVariants = {
-        hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+    const itemVariants = {
+        hidden: { opacity: 0, y: 40 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
     };
 
     return (
-        <section
-            id="education"
-            className="py-20 px-4 sm:py-28 bg-gradient-to-b from-background/50 to-background/10"
-        >
-            <div className="container mx-auto max-w-5xl">
-                {/* Section Heading */}
+        <section id="education" className="py-20 px-4">
+            <div className="container mx-auto max-w-4xl">
+                {/* Heading */}
                 <motion.h2
-                    className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 text-center"
+                    className="text-3xl md:text-4xl font-bold mb-12 text-center text-white"
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1 }}
+                    transition={{ duration: 0.8 }}
                 >
                     My <span className="text-primary">Education</span>
                 </motion.h2>
 
                 {/* Timeline */}
                 <motion.div
-                    className="relative border-l-2 border-primary/40 ml-4 sm:ml-6"
+                    className="relative border-l border-border pl-6 space-y-10"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
@@ -69,25 +71,27 @@ const EducationSection = () => {
                     {educationData.map((edu, index) => (
                         <motion.div
                             key={index}
-                            className="mb-12 ml-6 relative"
-                            variants={cardVariants}
+                            className="relative"
+                            variants={itemVariants}
                         >
-                            {/* Timeline Point */}
-                            <span className="absolute -left-6 mt-20 flex items-center justify-center w-4 h-4 rounded-full bg-primary shadow-lg animate-pulse"></span>
+                            {/* Timeline Logo */}
+                            <div className="absolute -left-11 flex items-center justify-center w-12 h-12 rounded-full bg-card border border-border overflow-hidden shadow-md">
+                                <img
+                                    src={edu.logo}
+                                    alt={edu.institute}
+                                    className="w-10 h-10 object-contain"
+                                />
+                            </div>
 
-                            {/* Education Card */}
-                            <div className="bg-card p-6 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-transform duration-300 border border-primary/20">
-                                <h3 className="text-xl sm:text-2xl font-semibold flex items-center gap-3">
-                                    <GraduationCap className="w-5 h-5 text-primary" />
+                            {/* Card */}
+                            <div className="border border-border rounded-xl p-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-card">
+                                <h3 className="text-lg md:text-xl font-semibold text-primary">
                                     {edu.degree}
                                 </h3>
-                                <p className="text-lg sm:text-base text-muted-foreground mt-1">
-                                    {edu.institute}
+                                <p className="text-sm md:text-base font-medium text-foreground/90 mt-1">
+                                    {edu.institute} • {edu.duration}
                                 </p>
-                                <span className="text-sm sm:text-base text-primary font-medium">
-                                    {edu.duration}
-                                </span>
-                                <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">
+                                <p className="text-sm md:text-base text-white/80 mt-3 leading-relaxed">
                                     {edu.description}
                                 </p>
                             </div>

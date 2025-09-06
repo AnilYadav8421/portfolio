@@ -5,7 +5,7 @@ const HeroSection = () => {
     return (
         <section
             id="hero"
-            className="relative min-h-screen flex flex-col items-center justify-center"
+            className="relative min-h-[80vh] md:min-h-screen flex flex-col items-center justify-center pt-12 md:pt-0"
         >
             <div className="container max-w-4xl mx-auto text-center z-10">
                 <motion.div
@@ -41,9 +41,9 @@ const HeroSection = () => {
                             visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
                         }}
                     >
-                        I design and develop modern web experiences using cutting-edge technologies.
-                        Specializing in front-end development, I create interfaces that are responsive,
-                        accessible, and visually engaging.
+                        I design and develop modern web experiences using cutting-edge
+                        technologies. Specializing in front-end development, I create
+                        interfaces that are responsive, accessible, and visually engaging.
                     </motion.p>
 
                     <motion.div
@@ -65,12 +65,14 @@ const HeroSection = () => {
 
             {/* Scroll indicator */}
             <motion.div
-                className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+                className="absolute bottom-8 md:bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
             >
-                <span className="text-lg text-muted-foreground mb-2">Scroll</span>
-                <ArrowDown className="h-7 w-7 text-white" aria-hidden="true" />
+                <span className="text-sm md:text-lg text-muted-foreground mb-2">
+                    Scroll
+                </span>
+                <ArrowDown className="h-6 w-6 md:h-7 md:w-7 text-white" aria-hidden="true" />
             </motion.div>
         </section>
     );

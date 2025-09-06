@@ -15,7 +15,6 @@ const skills = [
   { name: "VS Code", category: "tools", logo: "/projects/vscode.png" },
 ];
 
-// Dynamically generate categories from skills
 const categories = ["All", ...new Set(skills.map(skill => skill.category))];
 
 const SkillsSection = () => {
@@ -26,12 +25,6 @@ const SkillsSection = () => {
       activeCategory.toLowerCase() === "all" ||
       skill.category === activeCategory.toLowerCase()
   );
-
-  const getIcon = (category) => {
-    if (category === "frontend") return <Code className="w-5 h-5 text-primary" />;
-    if (category === "backend") return <Server className="w-5 h-5 text-primary" />;
-    return <Settings className="w-5 h-5 text-primary" />;
-  };
 
   const containerVariants = {
     hidden: {},
@@ -44,7 +37,7 @@ const SkillsSection = () => {
   };
 
   return (
-    <section id="skills" className="py-16 px-4 bg-background">
+    <section id="skills" className="py-16 px-4">
       <div className="container mx-auto max-w-5xl">
         {/* Heading */}
         <motion.h2
@@ -76,27 +69,25 @@ const SkillsSection = () => {
 
         {/* Skills Grid */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
           initial="hidden"
-          animate="visible"  // use animate instead of whileInView
+          animate="visible"
           variants={containerVariants}
         >
           {filteredSkills.map(skill => (
             <motion.div
               key={skill.name}
-              className="bg-primary/10 border border-border rounded-2xl p-4 shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-3"
+              className="border border-border rounded-xl p-4 shadow-sm hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center gap-2"
               variants={cardVariants}
             >
-              <div className="p-2 rounded-full bg-primary/10 flex-shrink-0 w-10 h-10 flex items-center justify-center">
-                {skill.logo && (
-                  <img
-                    src={skill.logo}
-                    alt={skill.name}
-                    className="w-8 h-8 object-contain"
-                  />
-                )}
-              </div>
-              <h3 className="text-base sm:text-lg font-semibold">{skill.name}</h3>
+              <h3 className="text-base sm:text-lg font-semibold text-center">{skill.name}</h3>
+              {skill.logo && (
+                <img
+                  src={skill.logo}
+                  alt={skill.name}
+                  className="w-12 h-12 object-contain"
+                />
+              )}
             </motion.div>
           ))}
         </motion.div>

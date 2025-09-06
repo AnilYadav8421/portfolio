@@ -13,11 +13,10 @@ const experienceData = [
       "Used Git for version control in collaborative workflows."
     ],
   },
-  // You can add more experiences here
+  // Add more experiences here if needed
 ];
 
 const ExperienceSection = () => {
-  // Variants for staggered container
   const containerVariants = {
     hidden: {},
     visible: {
@@ -27,14 +26,13 @@ const ExperienceSection = () => {
     },
   };
 
-  // Fade-up animation for each card
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   };
 
   return (
-    <section id="experience" className="py-16 px-3 sm:px-4 md:py-20 bg-background">
+    <section id="experience" className="py-16 px-3 sm:px-4 md:py-20">
       <div className="max-w-4xl mx-auto">
         {/* Section Heading */}
         <motion.h2
@@ -58,13 +56,13 @@ const ExperienceSection = () => {
           {experienceData.map((exp, index) => (
             <motion.div
               key={index}
-              className="bg-primary/10 border border-border rounded-2xl p-3 sm:p-5 shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              className="border border-border rounded-2xl p-3 sm:p-5 shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
               variants={cardVariants}
             >
               {/* Header: Logo + Role/Company + Duration */}
               <div className="flex flex-row flex-wrap justify-between items-center gap-2 sm:gap-4">
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="p-2 rounded-full bg-primary/10 flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
+                  <div className="p-2 rounded-full flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
                     {exp.logo && (
                       <img
                         src={exp.logo}
@@ -87,7 +85,7 @@ const ExperienceSection = () => {
               <hr className="mt-3 border-t border-gray-300/40" />
 
               {/* Description */}
-              <div className="mt-4 sm:mt-4 text-muted-foreground leading-relaxed space-y-2 sm:space-y-2 text-sm sm:text-base text-left ">
+              <div className="mt-4 sm:mt-4 text-muted-foreground leading-relaxed space-y-2 sm:space-y-2 text-sm sm:text-base text-left">
                 {exp.description.map((point, idx) => (
                   <p key={idx} className="flex items-start gap-2">
                     <span className="mt-2 w-2 h-2 bg-primary rounded-full flex-shrink-0"></span>

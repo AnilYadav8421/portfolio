@@ -1,7 +1,6 @@
-// hooks/useInView.js
 import { useEffect, useState, useRef } from "react";
 
-export const useInView = (threshold = 0.1) => {
+export const useInView = (threshold = 0.1, once = true) => {
     const ref = useRef(null);
     const [isInView, setIsInView] = useState(false);
 
@@ -10,16 +9,17 @@ export const useInView = (threshold = 0.1) => {
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setIsInView(true);
-                    observer.unobserve(entry.target); // animate only once
+                    if (once) observer.unobserve(entry.target); // animate only once
+                } else if (!once) {
+                    setIsInView(false); // reset if element goes out of view
                 }
             },
             { threshold }
         );
 
         if (ref.current) observer.observe(ref.current);
-
         return () => observer.disconnect();
-    }, [threshold]);
+    }, [threshold, once]);
 
     return [ref, isInView];
 };

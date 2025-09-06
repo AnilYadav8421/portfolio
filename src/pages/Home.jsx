@@ -12,12 +12,12 @@ import ExperienceSection from '../components/ExperienceSection'
 
 const Home = () => {
     return (
-        <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-            <ThemeToggle />
+        <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
+            <ThemeToggle className="fixed top-6 right-6 z-50" />
             <StarBackground />
 
             <Navbar />
-            <main>
+            <main className="relative z-10">
                 <HeroSection />
                 <AboutSection />
                 <ExperienceSection />

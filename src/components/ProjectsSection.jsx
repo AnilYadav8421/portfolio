@@ -5,13 +5,18 @@ const projects = [
     {
         id: 1,
         title: "E-commerce Platform",
+        description:
+            "E-Commerce platform built with React. Features product browsing with filters, variant selection, shopping cart, and secure checkout with Stripe & Razorpay integration. Deployed on Vercel for seamless performance.",
         image: "/projects/Project1.png",
-        demoUrl: "https://e-commerce-website-git-main-anils-projects-1753d137.vercel.app/",
+        demoUrl:
+            "https://e-commerce-website-git-main-anils-projects-1753d137.vercel.app/",
         githubUrl: "https://github.com/AnilYadav8421/eCommerce-website",
     },
     {
         id: 2,
         title: "Crypto Screener App",
+        description:
+            "A modern cryptocurrency screener built with React.js. Displays live crypto prices with detailed charts, supports concurrent search, pagination, sorting, and lets users save their favorite coins.",
         image: "/projects/Project2.png",
         demoUrl: "https://live-crypto-gamma.vercel.app/",
         githubUrl: "https://github.com/AnilYadav8421/LiveCrypto",
@@ -19,6 +24,8 @@ const projects = [
     {
         id: 3,
         title: "Real Estate App",
+        description:
+            "A responsive real estate developer website built with React.js and Tailwind CSS. Includes smooth animations and a working contact form that sends user inquiries directly to the admin's email.",
         image: "/projects/Project3.png",
         demoUrl: "https://anilyadav8421.github.io/Estate-App/",
         githubUrl: "https://github.com/AnilYadav8421/Estate-App",
@@ -26,6 +33,8 @@ const projects = [
     {
         id: 4,
         title: "Car Rental App",
+        description:
+            "A responsive car rental frontend built with React.js. Features car listings with filtering by pickup location and date selection, designed with a modern and user-friendly interface.",
         image: "/projects/cr-rent.png",
         demoUrl: "https://car-rental-omega-gold.vercel.app/",
         githubUrl: "https://github.com/AnilYadav8421/Car_Rental",
@@ -33,6 +42,8 @@ const projects = [
     {
         id: 5,
         title: "Car-Service",
+        description:
+            "Website for a black car service company with booking and service details.",
         image: "/projects/bcs.png",
         demoUrl: "https://black-car-service.vercel.app/",
         githubUrl: "https://github.com/AnilYadav8421/Black-Car-Service",
@@ -40,7 +51,6 @@ const projects = [
 ];
 
 const ProjectsSection = () => {
-    // Framer Motion variants
     const containerVariants = {
         hidden: {},
         visible: { transition: { staggerChildren: 0.2 } },
@@ -52,9 +62,8 @@ const ProjectsSection = () => {
     };
 
     return (
-        <section id="projects" className="py-24 px-2 relative bg-background">
+        <section id="projects" className="py-24 px-4 relative">
             <div className="container mx-auto max-w-5xl">
-                {/* Section Title */}
                 <motion.h2
                     className="text-3xl md:text-4xl font-bold mb-12 text-center"
                     initial={{ opacity: 0, y: -20 }}
@@ -65,7 +74,6 @@ const ProjectsSection = () => {
                     Featured <span className="text-primary">Projects</span>
                 </motion.h2>
 
-                {/* Projects Grid */}
                 <motion.div
                     className="grid grid-cols-1 md:grid-cols-2 gap-8"
                     initial="hidden"
@@ -73,14 +81,13 @@ const ProjectsSection = () => {
                     viewport={{ once: true }}
                     variants={containerVariants}
                 >
-                    {projects.map((project) => (
+                    {projects.map(project => (
                         <motion.div
                             key={project.id}
-                            className="group bg-card rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-transform duration-300"
+                            className="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-transform duration-300 border border-border"
                             variants={cardVariants}
                             whileHover={{ scale: 1.03 }}
                         >
-                            {/* Project Image */}
                             <div className="w-full aspect-w-16 aspect-h-9 overflow-hidden">
                                 <motion.img
                                     src={project.image}
@@ -91,33 +98,39 @@ const ProjectsSection = () => {
                                 />
                             </div>
 
-                            {/* Project Name & Links */}
-                            <div className="p-4 flex justify-between items-center">
-                                <h3 className="text-lg sm:text-xl font-semibold">{project.title}</h3>
-                                <div className="flex gap-3">
-                                    <a
-                                        href={project.demoUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                                    >
-                                        <ExternalLink size={20} />
-                                    </a>
-                                    <a
-                                        href={project.githubUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                                    >
-                                        <Github size={20} />
-                                    </a>
+                            <div className="p-5 flex flex-col gap-3">
+                                <div className="flex justify-between items-start">
+                                    <h3 className="text-lg sm:text-xl font-semibold">
+                                        {project.title}
+                                    </h3>
+                                    <div className="flex gap-3 mt-1">
+                                        <a
+                                            href={project.demoUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                                        >
+                                            <ExternalLink size={20} />
+                                        </a>
+                                        <a
+                                            href={project.githubUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                                        >
+                                            <Github size={20} />
+                                        </a>
+                                    </div>
                                 </div>
+
+                                <p className="text-sm text-muted-foreground text-left leading-relaxed">
+                                    {project.description}
+                                </p>
                             </div>
                         </motion.div>
                     ))}
                 </motion.div>
 
-                {/* Github Button */}
                 <div className="text-center mt-12">
                     <a
                         className="cosmic-button w-fit flex items-center mx-auto gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
