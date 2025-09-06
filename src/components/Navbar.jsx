@@ -42,16 +42,16 @@ const Navbar = () => {
                 </a>
 
                 {/* Desktop Nav */}
+                {/* Desktop Nav */}
                 <div className="hidden md:flex space-x-8">
                     {navItems.map((item) => (
                         <motion.a
                             key={item.name}
                             href={item.href}
                             className="relative text-white text-base md:text-lg lg:text-xl
-                after:content-[''] after:absolute after:-bottom-1 after:left-0
-                after:w-0 after:h-1 after:bg-gradient-to-r from-primary/70 to-primary
-                after:rounded after:transition-all after:duration-300
-                hover:after:w-full hover:after:shadow-[0_0_15px_#fff,0_0_30px_#fff,0_0_45px_#fff]"
+            after:content-[''] after:absolute after:-bottom-1 after:left-0
+            after:w-0 after:h-1 after:bg-white after:rounded after:transition-all after:duration-300
+            hover:after:w-full hover:after:shadow-[0_0_15px_#fff,0_0_30px_#fff,0_0_45px_#fff]"
                             whileHover={{ scale: 1.05 }}
                             transition={{ type: "spring", stiffness: 300 }}
                         >
@@ -59,6 +59,7 @@ const Navbar = () => {
                         </motion.a>
                     ))}
                 </div>
+
 
                 {/* Mobile Menu Button */}
                 <button
