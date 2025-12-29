@@ -2,10 +2,23 @@ import { motion } from "framer-motion";
 
 const experienceData = [
   {
+    role: "React.js Developer Intern (Frontend)",
+    logo: "/projects/anstric.avif",
+    company: "Anstric Games Pvt. Ltd.",
+    duration: "November 2025 - Present",
+    description: [
+      "Building a college website using React.js creating reusable components and responsive layouts for a smooth user experience",
+      "Referring to Figma designs to implement consistent and visually appealing UI across pages .",
+      "Managing application state with and setting up client-side routing using and setting up client-side routing using React Router.",
+      "Fetching and displaying dynamic data via REST APIs using Axios."
+    ]
+  },
+
+  {
     role: "Frontend Developer Intern",
     logo: "/projects/nerdtech.png",
     company: "NerdTech Lcc",
-    duration: "July 2025 - Present",
+    duration: "July 2025 - October 2025",
     description: [
       "Built and maintained a client website with React.js and Tailwind CSS.",
       "Integrated REST APIs for dynamic product data.",
