@@ -70,7 +70,7 @@ const AboutSection = () => {
                         <h3 className="text-3xl md:text-4xl font-semibold">Frontend Developer</h3>
 
                         <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                            I specialize in building responsive, accessible, and high-performance web applications with modern technologies.
+                            I currently specialize in <span className="text-primary font-semibold">frontend development</span>, but my passion lies in building full-stack websites from initial idea to product delivery.
                         </p>
 
                         <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">

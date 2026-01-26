@@ -1,11 +1,4 @@
-import {
-    Linkedin,
-    Mail,
-    MapPin,
-    Phone,
-    Send,
-    Twitter,
-} from "lucide-react";
+import { Linkedin, Mail, MapPin, Phone, Send, Twitter, } from "lucide-react";
 import { cn } from "../lib/utils";
 import { useToast } from "../hooks/use-toast";
 import { useState } from "react";
@@ -41,37 +34,21 @@ const ContactSection = () => {
     return (
         <section id="contact" className="py-24 relative bg-secondary/30">
             <div className="container mx-auto max-w-5xl">
-                <motion.h2
-                    className="text-3xl md:text-4xl font-bold mb-4 text-center"
-                    initial={{ opacity: 0, y: -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1 }}
-                >
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
                     Get In <span className="text-primary">Touch</span>
-                </motion.h2>
+                </h2>
 
-                <motion.p
-                    className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                >
+                <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
                     Have a project or collaboration in mind? Feel free to reach out — I’m always open to new opportunities.
-                </motion.p>
+                </p>
 
-                <motion.div
-                    className="grid grid-cols-1 md:grid-cols-2 gap-12"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={containerVariants}
-                >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                     {/* Contact Info */}
-                    <motion.div className="space-y-8" variants={fadeUpVariants}>
+                    <div className="space-y-8" variants={fadeUpVariants}>
                         <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
-
+                        <p className="md:text-start text-center text-muted-foreground mb-3 mx-auto">
+                            Whether it's a question or a collaboration, we'd love to hear from you.
+                        </p>
                         <div className="space-y-6">
                             {[
                                 { icon: <Mail className="h-6 w-6 text-primary" />, label: "Email", value: "anilyadav8149838058@gmail.com", href: "mailto:anilyadav8149838058@gmail.com" },
@@ -81,7 +58,7 @@ const ContactSection = () => {
                                 <div key={idx} className="flex items-start space-x-4">
                                     <div className="p-3 rounded-full bg-primary/10">{item.icon}</div>
                                     <div>
-                                        <h4 className="font-medium">{item.label}</h4>
+                                        <h4 className="font-medium text-left">{item.label}</h4>
                                         {item.href ? (
                                             <a
                                                 href={item.href}
@@ -100,14 +77,14 @@ const ContactSection = () => {
                         {/* Social Links */}
                         <div className="pt-8">
                             <h4 className="font-medium mb-4">Connect With Me</h4>
-                            <div className="flex space-x-4 justify-center md:justify-start">
+                            <div className="flex space-x-4 justify-center">
                                 <a
                                     href="https://www.linkedin.com/in/anil-yadav-3111a9268/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="transform transition-transform duration-300 hover:scale-110"
                                 >
-                                    <Linkedin className="h-6 w-6 text-primary hover:text-primary/80 transition-colors" />
+                                    <Linkedin className="h-7 w-7 text-primary hover:text-primary/80 transition-colors" />
                                 </a>
                                 <a
                                     href="https://x.com/anilyadav1108"
@@ -115,19 +92,15 @@ const ContactSection = () => {
                                     rel="noopener noreferrer"
                                     className="transform transition-transform duration-300 hover:scale-110"
                                 >
-                                    <Twitter className="h-6 w-6 text-primary hover:text-primary/80 transition-colors" />
+                                    <Twitter className="h-7 w-7 text-primary hover:text-primary/80 transition-colors" />
                                 </a>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Contact Form */}
-                    <motion.div
-                        className="bg-card p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow"
-                        variants={fadeUpVariants}
-                    >
+                    <div className="bg-card p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
                         <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
-
                         <form className="space-y-6" onSubmit={handleSubmit}>
                             {[
                                 { id: "name", label: "Your Name", type: "text", placeholder: "Anil Yadav..." },
@@ -135,7 +108,7 @@ const ContactSection = () => {
                                 { id: "message", label: "Your Message", type: "textarea", placeholder: "Hello, I'd like to talk about..." },
                             ].map((field, idx) => (
                                 <div key={idx}>
-                                    <label htmlFor={field.id} className="block text-sm font-medium mb-2">
+                                    <label htmlFor={field.id} className="block text-sm text-left font-medium mb-2">
                                         {field.label}
                                     </label>
                                     {field.type === "textarea" ? (
@@ -144,7 +117,7 @@ const ContactSection = () => {
                                             name={field.id}
                                             required
                                             placeholder={field.placeholder}
-                                            className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none transition-shadow duration-300"
+                                            className="w-full px-4 py-5 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none transition-shadow duration-300"
                                         />
                                     ) : (
                                         <input
@@ -170,8 +143,8 @@ const ContactSection = () => {
                                 <Send size={16} />
                             </button>
                         </form>
-                    </motion.div>
-                </motion.div>
+                    </div>
+                </div>
             </div>
         </section>
     );

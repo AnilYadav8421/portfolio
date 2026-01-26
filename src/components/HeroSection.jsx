@@ -5,7 +5,7 @@ const HeroSection = () => {
     return (
         <section
             id="hero"
-            className="relative min-h-[80vh] md:min-h-screen flex flex-col items-center justify-center pt-12 md:pt-0"
+            className="relative min-h-[70vh] md:min-h-screen flex flex-col items-center justify-center md:pt-0"
         >
             <div className="container max-w-4xl mx-auto text-center z-10">
                 <motion.div
@@ -35,15 +35,13 @@ const HeroSection = () => {
                     </motion.h1>
 
                     <motion.p
-                        className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl sm:max-w-3xl md:max-w-5xl sm:px-6 mx-auto text-center"
+                        className="text-base sm:text-sm md:text-xl text-muted-foreground max-w-2xl sm:max-w-3xl md:max-w-5xl sm:px-6 mx-auto text-center"
                         variants={{
                             hidden: { opacity: 0, y: 20 },
                             visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
                         }}
                     >
-                        I design and develop modern web experiences using cutting-edge
-                        technologies. Specializing in front-end development, I create
-                        interfaces that are responsive, accessible, and visually engaging.
+                        Have a project you want to collaborate on, or looking for a talented and versatile frontend developer?
                     </motion.p>
 
                     <motion.div
