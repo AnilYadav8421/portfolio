@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 
 const educationData = [
     {
@@ -50,7 +49,7 @@ const EducationSection = () => {
         <section id="education" className="py-20 px-4">
             <div className="container mx-auto max-w-4xl">
                 {/* Heading */}
-                <motion.h2
+                <h2
                     className="text-3xl md:text-4xl font-bold mb-12 text-center text-white"
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -58,10 +57,10 @@ const EducationSection = () => {
                     transition={{ duration: 0.8 }}
                 >
                     My <span className="text-primary">Education</span>
-                </motion.h2>
+                </h2>
 
                 {/* Timeline */}
-                <motion.div
+                <div
                     className="relative border-l border-border pl-6 space-y-10"
                     initial="hidden"
                     whileInView="visible"
@@ -69,7 +68,7 @@ const EducationSection = () => {
                     variants={containerVariants}
                 >
                     {educationData.map((edu, index) => (
-                        <motion.div
+                        <div
                             key={index}
                             className="relative"
                             variants={itemVariants}
@@ -95,9 +94,9 @@ const EducationSection = () => {
                                     {edu.description}
                                 </p>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     );

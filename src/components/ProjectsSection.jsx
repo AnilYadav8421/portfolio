@@ -1,13 +1,13 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
-import { motion } from "framer-motion";
 
 const projects = [
     {
         id: 1,
         title: "E-commerce Platform",
         description:
-            "E-Commerce platform built with React. Features product browsing with filters, variant selection, shopping cart, and secure checkout with Stripe & Razorpay integration. Deployed on Vercel for seamless performance.",
+            "E-commerce platform built with React featuring product filters, variant selection, cart, and Stripe & Razorpay checkout. Deployed on Vercel.",
         image: "/projects/Project1.png",
+        date: "March 2025",
         demoUrl:
             "https://e-commerce-website-git-main-anils-projects-1753d137.vercel.app/",
         githubUrl: "https://github.com/AnilYadav8421/eCommerce-website",
@@ -16,8 +16,9 @@ const projects = [
         id: 2,
         title: "Crypto Screener App",
         description:
-            "A modern cryptocurrency screener built with React.js. Displays live crypto prices with detailed charts, supports concurrent search, pagination, sorting, and lets users save their favorite coins.",
+            "Modern crypto screener built with React.js featuring live price tracking, charts, search, sorting, pagination, and favorites.",
         image: "/projects/Project2.png",
+        date: "July 2025",
         demoUrl: "https://live-crypto-gamma.vercel.app/",
         githubUrl: "https://github.com/AnilYadav8421/LiveCrypto",
     },
@@ -25,8 +26,9 @@ const projects = [
         id: 3,
         title: "Real Estate App",
         description:
-            "A responsive real estate developer website built with React.js and Tailwind CSS. Includes smooth animations and a working contact form that sends user inquiries directly to the admin's email.",
+            "Responsive real estate website built with React.js & Tailwind CSS featuring smooth animations and a functional contact form with email integration.",
         image: "/projects/Project3.png",
+        date: "Jan 2025",
         demoUrl: "https://anilyadav8421.github.io/Estate-App/",
         githubUrl: "https://github.com/AnilYadav8421/Estate-App",
     },
@@ -34,67 +36,78 @@ const projects = [
         id: 4,
         title: "Car Rental App",
         description:
-            "A responsive car rental frontend built with React.js. Features car listings with filtering by pickup location and date selection, designed with a modern and user-friendly interface.",
+            "Responsive car rental frontend built with React.js featuring car listings, location-based filters, and date selection in a modern UI.",
         image: "/projects/cr-rent.png",
+        date: "Aug 2025",
         demoUrl: "https://car-rental-omega-gold.vercel.app/",
         githubUrl: "https://github.com/AnilYadav8421/Car_Rental",
     },
     {
         id: 5,
-        title: "Car-Service",
+        title: "Live City Dashboard",
         description:
-            "Website for a black car service company with booking and service details.",
-        image: "/projects/bcs.png",
-        demoUrl: "https://black-car-service.vercel.app/",
-        githubUrl: "https://github.com/AnilYadav8421/Black-Car-Service",
+            "React.js city dashboard with live weather, news, country data, Firebase real-time notes, and WebSocket notifications.",
+        image: "/projects/live-city.png",
+        date: "Nov 2024",
+        demoUrl: "https://live-city-dashboard.vercel.app/",
+        githubUrl: "https://github.com/AnilYadav8421/Live-City-Dashboard",
+    },
+    {
+        id: 6,
+        title: "Medication Manager",
+        description:
+            "Responsive medication tracker built with React.js & Tailwind CSS featuring reminders, dosage tracking, and a clean, user-friendly UI.",
+        image: "/projects/med-mgmt.png",
+        date: "Sept 2024",
+        demoUrl: "https://medifor7-landing-page-t16g.vercel.app/",
+        githubUrl: "https://github.com/AnilYadav8421/medifor7-landing-page",
+    },
+
+    {
+        id: 7,
+        title: "Task Management App",
+        description:
+            "Responsive task management app built with HTML, CSS, and JavaScript featuring task creation, editing, deletion, and status tracking.",
+        image: "/projects/task-mgmt.png",
+        date: "July 2024",
+        demoUrl: "https://anilyadav8421.github.io/To-Do-App/",
+        githubUrl: "https://github.com/AnilYadav8421/To-Do-App",
+    },
+    {
+        id: 8,
+        title: "Weather Forecast App",
+        description:
+            "Responsive weather forecast app built with React.js & Tailwind CSS featuring real-time data, location-based forecasts, and a clean, easy-to-use UI.",
+        image: "/projects/weather-app.png",
+        date: "Feb 2024",
+        demoUrl: "https://weather-website-omega.vercel.app/",
+        githubUrl: "https://github.com/AnilYadav8421/Weather-website",
     },
 ];
 
 const ProjectsSection = () => {
-    const containerVariants = {
-        hidden: {},
-        visible: { transition: { staggerChildren: 0.2 } },
-    };
-
-    const cardVariants = {
-        hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
-    };
-
     return (
         <section id="projects" className="py-24 px-4 relative">
             <div className="container mx-auto max-w-5xl">
-                <motion.h2
+                <h2
                     className="text-3xl md:text-4xl font-bold mb-12 text-center"
-                    initial={{ opacity: 0, y: -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1 }}
                 >
                     Featured <span className="text-primary">Projects</span>
-                </motion.h2>
+                </h2>
 
-                <motion.div
+                <div
                     className="grid grid-cols-1 md:grid-cols-2 gap-8"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={containerVariants}
                 >
                     {projects.map(project => (
-                        <motion.div
+                        <div
                             key={project.id}
                             className="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-transform duration-300 border border-border"
-                            variants={cardVariants}
-                            whileHover={{ scale: 1.03 }}
                         >
                             <div className="w-full aspect-w-16 aspect-h-9 overflow-hidden">
-                                <motion.img
+                                <img
                                     src={project.image}
                                     alt={project.title}
                                     className="w-full h-full object-cover transition-transform duration-300"
-                                    whileHover={{ scale: 1.1 }}
-                                    loading="lazy"
                                 />
                             </div>
 
@@ -102,6 +115,9 @@ const ProjectsSection = () => {
                                 <div className="flex justify-between items-start">
                                     <h3 className="text-lg sm:text-xl font-semibold">
                                         {project.title}
+                                        <div className="text-xs rounded-full mt-1 text-left text-muted-foreground">
+                                            {project.date}
+                                        </div>
                                     </h3>
                                     <div className="flex gap-3 mt-1">
                                         <a
@@ -127,9 +143,9 @@ const ProjectsSection = () => {
                                     {project.description}
                                 </p>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
-                </motion.div>
+                </div>
 
                 <div className="text-center mt-12">
                     <a

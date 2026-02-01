@@ -1,5 +1,4 @@
 import { Briefcase, Code, User } from "lucide-react";
-import { motion } from "framer-motion";
 
 const AboutSection = () => {
     const containerVariants = {
@@ -35,12 +34,12 @@ const AboutSection = () => {
     return (
         <section id="about" className="py-24 relative overflow-hidden">
             {/* Optional floating shapes */}
-            <motion.div
+            <div
                 className="absolute top-0 left-0 w-40 h-40 rounded-full filter blur-3xl -translate-x-20 -translate-y-20"
                 animate={{ x: [0, 20, 0], y: [0, 20, 0] }}
                 transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
             />
-            <motion.div
+            <div
                 className="absolute bottom-0 right-0 w-60 h-60 rounded-full filter blur-3xl translate-x-20 translate-y-20"
                 animate={{ x: [0, -20, 0], y: [0, -20, 0] }}
                 transition={{ duration: 12, repeat: Infinity, repeatType: "reverse" }}
@@ -48,7 +47,7 @@ const AboutSection = () => {
 
             <div className="container mx-auto max-w-5xl relative z-10">
                 {/* Section Heading */}
-                <motion.h2
+                <h2
                     className="text-3xl md:text-4xl font-bold mb-12 text-center"
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -56,9 +55,9 @@ const AboutSection = () => {
                     transition={{ duration: 1 }}
                 >
                     About <span className="text-primary">Me</span>
-                </motion.h2>
+                </h2>
 
-                <motion.div
+                <div
                     className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
                     initial="hidden"
                     whileInView="visible"
@@ -66,7 +65,7 @@ const AboutSection = () => {
                     variants={containerVariants}
                 >
                     {/* Text Content */}
-                    <motion.div className="space-y-8 text-center md:text-left" variants={fadeUpVariants}>
+                    <div className="space-y-8 text-center md:text-left" variants={fadeUpVariants}>
                         <h3 className="text-3xl md:text-4xl font-semibold">Frontend Developer</h3>
 
                         <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
@@ -95,12 +94,12 @@ const AboutSection = () => {
                                 Download CV
                             </a>
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Skills / Cards */}
-                    <motion.div className="grid grid-cols-1 gap-6" variants={containerVariants}>
+                    <div className="grid grid-cols-1 gap-6" variants={containerVariants}>
                         {skills.map((skill, index) => (
-                            <motion.article
+                            <article
                                 key={index}
                                 className="gradient-border p-6 rounded-xl card-hover transition-all duration-300 hover:scale-105 hover:shadow-xl"
                                 variants={fadeUpVariants}
@@ -114,10 +113,10 @@ const AboutSection = () => {
                                         <p className="text-muted-foreground">{skill.desc}</p>
                                     </div>
                                 </div>
-                            </motion.article>
+                            </article>
                         ))}
-                    </motion.div>
-                </motion.div>
+                    </div>
+                </div>
             </div>
         </section>
     );

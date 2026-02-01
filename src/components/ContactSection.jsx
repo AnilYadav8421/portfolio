@@ -2,7 +2,6 @@ import { Linkedin, Mail, MapPin, Phone, Send, Twitter, } from "lucide-react";
 import { cn } from "../lib/utils";
 import { useToast } from "../hooks/use-toast";
 import { useState } from "react";
-import { motion } from "framer-motion";
 
 const ContactSection = () => {
     const { toast } = useToast();
@@ -19,11 +18,6 @@ const ContactSection = () => {
             });
             setIsSubmitting(false);
         }, 1500);
-    };
-
-    const containerVariants = {
-        hidden: {},
-        visible: { transition: { staggerChildren: 0.2 } },
     };
 
     const fadeUpVariants = {

@@ -6,7 +6,7 @@ const ThemeToggle = () => {
     localStorage.setItem("theme", "dark");
   }, []);
 
-  return null; // Or remove this component entirely if it's no longer needed
+  return null;
 };
 
 export default ThemeToggle;

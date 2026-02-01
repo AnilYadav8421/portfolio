@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { cn } from "../lib/utils";
-import { Code, Server, Settings } from "lucide-react";
 import { motion } from "framer-motion";
 
 const skills = [
@@ -42,14 +41,14 @@ const SkillsSection = () => {
     <section id="skills" className="py-16 px-4">
       <div className="container mx-auto max-w-5xl">
         {/* Heading */}
-        <motion.h2
+        <h2
           className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-center"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
           My <span className="text-primary">Technical Skills</span>
-        </motion.h2>
+        </h2>
 
         {/* Category Buttons */}
         <div className="flex flex-wrap justify-center gap-3 mb-8">
@@ -70,14 +69,14 @@ const SkillsSection = () => {
         </div>
 
         {/* Skills Grid */}
-        <motion.div
+        <div
           className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
           initial="hidden"
           animate="visible"
           variants={containerVariants}
         >
           {filteredSkills.map(skill => (
-            <motion.div
+            <div
               key={skill.name}
               className="border border-border rounded-xl p-4 shadow-sm hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center gap-2"
               variants={cardVariants}
@@ -90,9 +89,9 @@ const SkillsSection = () => {
                   className="w-12 h-12 object-contain"
                 />
               )}
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

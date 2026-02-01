@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 
 const experienceData = [
   {
@@ -48,7 +47,7 @@ const ExperienceSection = () => {
     <section id="experience" className="py-16 px-3 sm:px-4 md:py-20">
       <div className="max-w-4xl mx-auto">
         {/* Section Heading */}
-        <motion.h2
+        <h2
           className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,10 +55,10 @@ const ExperienceSection = () => {
           transition={{ duration: 1 }}
         >
           Work <span className="text-primary">Experience</span>
-        </motion.h2>
+        </h2>
 
         {/* Experience Cards */}
-        <motion.div
+        <div
           className="space-y-4 sm:space-y-6"
           initial="hidden"
           whileInView="visible"
@@ -67,7 +66,7 @@ const ExperienceSection = () => {
           variants={containerVariants}
         >
           {experienceData.map((exp, index) => (
-            <motion.div
+            <div
               key={index}
               className="border border-border rounded-2xl p-3 sm:p-5 shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
               variants={cardVariants}
@@ -106,9 +105,9 @@ const ExperienceSection = () => {
                   </p>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
