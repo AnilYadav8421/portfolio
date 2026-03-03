@@ -1,18 +1,8 @@
 import { Briefcase, Code, User } from "lucide-react";
+import plus from "../assets/svgs/plusSvg.svg";
+import percent from "../assets/svgs/percentSvg.svg";
 
 const AboutSection = () => {
-    const containerVariants = {
-        hidden: {},
-        visible: {
-            transition: { staggerChildren: 0.2 },
-        },
-    };
-
-    const fadeUpVariants = {
-        hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-    };
-
     const skills = [
         {
             icon: <Code className="h-6 w-6 text-primary" />,
@@ -32,90 +22,104 @@ const AboutSection = () => {
     ];
 
     return (
-        <section id="about" className="py-24 relative overflow-hidden">
-            {/* Optional floating shapes */}
-            <div
-                className="absolute top-0 left-0 w-40 h-40 rounded-full filter blur-3xl -translate-x-20 -translate-y-20"
-                animate={{ x: [0, 20, 0], y: [0, 20, 0] }}
-                transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
-            />
-            <div
-                className="absolute bottom-0 right-0 w-60 h-60 rounded-full filter blur-3xl translate-x-20 translate-y-20"
-                animate={{ x: [0, -20, 0], y: [0, -20, 0] }}
-                transition={{ duration: 12, repeat: Infinity, repeatType: "reverse" }}
-            />
+        <section id="about" className="relative overflow-hidden py-24">
+            {/* Decorative Background Shapes */}
+            <div className="absolute top-0 left-0 w-40 h-40 rounded-full blur-3xl -translate-x-20 -translate-y-20" />
+            <div className="absolute bottom-0 right-0 w-60 h-60 rounded-full blur-3xl translate-x-20 translate-y-20" />
 
-            <div className="container mx-auto max-w-5xl relative z-10">
+            <div className="container relative z-10 mx-auto max-w-7xl">
                 {/* Section Heading */}
-                <h2
-                    className="text-3xl md:text-4xl font-bold mb-12 text-center"
-                    initial={{ opacity: 0, y: -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1 }}
-                >
+                <h2 className="mb-16 text-center text-3xl font-bold md:text-4xl tracking-tight">
                     About <span className="text-primary">Me</span>
                 </h2>
 
-                <div
-                    className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={containerVariants}
-                >
-                    {/* Text Content */}
-                    <div className="space-y-8 text-center md:text-left" variants={fadeUpVariants}>
-                        <h3 className="text-3xl md:text-4xl font-semibold">Frontend Developer</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
 
-                        <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                            I currently specialize in <span className="text-primary font-semibold">frontend development</span>, but my passion lies in building full-stack websites from initial idea to product delivery.
-                        </p>
+                    {/* Left Content */}
+                    <div className="flex flex-col justify-between text-center md:text-left">
 
-                        <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                            I’m passionate about crafting elegant solutions to complex problems and continuously learning new technologies to stay at the forefront of the ever-evolving web.
-                        </p>
+                        <div className="space-y-6">
+                            <h3 className="text-3xl md:text-4xl font-semibold tracking-tight">
+                                Frontend Developer
+                            </h3>
 
-                        <div className="flex flex-col sm:flex-row gap-6 pt-6 justify-center md:justify-start">
-                            <a
-                                href="#contact"
-                                role="button"
-                                className="cosmic-button px-8 py-4 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-transform transform hover:scale-105 hover:shadow-[0_0_20px_rgba(139,92,246,0.5)]"
-                            >
-                                Get In Touch
-                            </a>
+                            <p className="max-w-xl text-lg md:text-xl text-muted-foreground leading-relaxed">
+                                I currently specialize in{" "}
+                                <span className="text-primary font-semibold">
+                                    frontend development
+                                </span>
+                                , but my passion lies in building full-stack websites from
+                                initial idea to product delivery.
+                            </p>
+                        </div>
 
-                            <a
-                                href="/Anil_Yadav_Resume.pdf"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-8 py-4 rounded-full border border-primary text-primary text-lg font-medium hover:bg-primary/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 hover:shadow-[0_0_15px_rgba(139,92,246,0.4)]"
-                            >
-                                Download CV
-                            </a>
+                        {/* Stats */}
+                        <div className="mt-12 flex  sm:flex-row justify-between items-center gap-8 p-8 md:p-10 rounded-2xl gradient-border text-center">
+                            {/* Projects */}
+                            <div className="flex flex-col items-center">
+                                <div className="flex items-baseline gap-1">
+                                    <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
+                                        10
+                                    </h2>
+                                    <img src={plus} alt="plus icon" className="w-5 md:w-7" />
+                                </div>
+                                <p className="mt-2 text-sm md:text-base text-muted-foreground">
+                                    Completed Projects
+                                </p>
+                            </div>
+
+                            {/* Satisfaction */}
+                            <div className="flex flex-col items-center">
+                                <div className="flex items-baseline gap-1">
+                                    <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
+                                        95
+                                    </h2>
+                                    <img src={percent} alt="percentage icon" className="w-5 md:w-7" />
+                                </div>
+                                <p className="mt-2 text-sm md:text-base text-muted-foreground">
+                                    Client Satisfaction
+                                </p>
+                            </div>
+
+                            {/* Experience */}
+                            <div className="flex flex-col items-center">
+                                <div className="flex items-baseline gap-1">
+                                    <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
+                                        1
+                                    </h2>
+                                    <img src={plus} alt="plus icon" className="w-5 md:w-7" />
+                                </div>
+                                <p className="mt-2 text-sm md:text-base text-muted-foreground">
+                                    Years of Experience
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    {/* Skills / Cards */}
-                    <div className="grid grid-cols-1 gap-6" variants={containerVariants}>
+                    {/* Right Skills */}
+                    <div className="grid gap-6">
                         {skills.map((skill, index) => (
                             <article
                                 key={index}
-                                className="gradient-border p-6 rounded-xl card-hover transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                                variants={fadeUpVariants}
+                                className="gradient-border p-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-[1.02]"
                             >
-                                <div className="flex items-start gap-4">
+                                <div className="flex items-center gap-4">
                                     <div className="p-3 rounded-full flex-shrink-0">
                                         {skill.icon}
                                     </div>
                                     <div>
-                                        <h4 className="font-semibold text-lg">{skill.title}</h4>
-                                        <p className="text-muted-foreground">{skill.desc}</p>
+                                        <h4 className="text-lg font-semibold">
+                                            {skill.title}
+                                        </h4>
+                                        <p className="text-muted-foreground leading-relaxed">
+                                            {skill.desc}
+                                        </p>
                                     </div>
                                 </div>
                             </article>
                         ))}
                     </div>
+
                 </div>
             </div>
         </section>

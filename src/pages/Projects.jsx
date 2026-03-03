@@ -1,24 +1,24 @@
-import { ArrowRight, ExternalLink, Github, } from "lucide-react";
-import { projects } from '../Data/projectData.js'
-import { Link } from "react-router-dom";
+import { ArrowRight, ExternalLink, Github } from "lucide-react";
 
-const featuredProjects = projects.slice(0, 4);
+import {projects} from '../Data/projectData.js'
 
-const ProjectsSection = () => {
+const Projects = () => {
     return (
-        <section id="projects" className="py-24 px-4 relative">
+        <section id="projects" className="py-24 px-4 bg-gray-900 relative">
             <div className="container mx-auto max-w-5xl">
                 <h2
-                    className="text-3xl md:text-4xl font-bold mb-12 text-center"
+                    className="text-3xl text-white md:text-4xl font-bold mb-12 text-center"
                 >
                     Featured <span className="text-primary">Projects</span>
                 </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {featuredProjects.map(project => (
+                <div
+                    className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                >
+                    {projects.map(project => (
                         <div
                             key={project.id}
-                            className="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-transform duration-300 border border-border"
+                            className="group text-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-transform duration-300 border border-border"
                         >
                             <div className="w-full aspect-w-16 aspect-h-9 overflow-hidden">
                                 <img
@@ -41,7 +41,7 @@ const ProjectsSection = () => {
                                             href={project.demoUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                                            className="text-white hover:text-primary transition-colors duration-300"
                                         >
                                             <ExternalLink size={20} />
                                         </a>
@@ -49,7 +49,7 @@ const ProjectsSection = () => {
                                             href={project.githubUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                                            className="text-white hover:text-primary transition-colors duration-300"
                                         >
                                             <Github size={20} />
                                         </a>
@@ -64,31 +64,19 @@ const ProjectsSection = () => {
                     ))}
                 </div>
 
-
-                <div className="flex flex-col gap-2 md:justify-around mt-12">
-                    <div>
-                        <a
-                            className="cosmic-button md:w-52   flex justify-center items-center mx-auto gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            href="https://github.com/AnilYadav8421"
-                        >
-                            Check My Github <ArrowRight size={16} />
-                        </a>
-                    </div>
-
-                    <div>
-                        <Link
-                            to="/all_project"
-                            className="cosmic-button md:w-52  flex justify-center items-center mx-auto gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                        >
-                            All Projects <ArrowRight size={16} />
-                        </Link>
-                    </div>
-                </div>
+                {/* <div className="text-center mt-12">
+                    <a
+                        className="cosmic-button w-fit flex items-center mx-auto gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://github.com/AnilYadav8421"
+                    >
+                        Check My Github <ArrowRight size={16} />
+                    </a>
+                </div> */}
             </div>
         </section>
     );
 };
 
-export default ProjectsSection;
+export default Projects;

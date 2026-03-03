@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Suspense, lazy, useState, useEffect } from "react";
+import Projects from "./pages/Projects";
 
 const Home = lazy(() => import("./pages/Home"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -26,6 +27,7 @@ const App = () => {
       <Suspense fallback={showLoader ? <FallbackLoader /> : null}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/all_project" element={<Projects />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

@@ -1,115 +1,143 @@
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import { SiReact, SiJavascript, SiTailwindcss, SiAxios, SiFigma } from "react-icons/si";
 
 const experienceData = [
   {
     role: "React.js Developer Intern (Frontend)",
     logo: "/projects/anstric.avif",
     company: "Anstric Games Pvt. Ltd.",
+    tech: [
+      { name: "React", icon: <SiReact className="text-blue-400 w-5 h-5" /> },
+      { name: "Tailwind css", icon: <SiTailwindcss className="text-blue-400 w-5 h-5" /> },
+      { name: "React Router", icon: <SiReact className="text-blue-300 w-5 h-5" /> },
+      { name: "Axios", icon: <SiAxios className="text-blue-500 w-5 h-5" /> },
+      { name: "Figma", icon: <SiFigma className="text-pink-500 w-5 h-5" /> },
+    ],
     duration: "November 2025 - Present",
-    description: [
-      "Building a college website using React.js creating reusable components and responsive layouts for a smooth user experience",
-      "Referring to Figma designs to implement consistent and visually appealing UI across pages .",
-      "Managing application state with and setting up client-side routing using and setting up client-side routing using React Router.",
-      "Fetching and displaying dynamic data via REST APIs using Axios."
-    ]
+    description: ["Developed a CMS-driven web platform using React.js with modular, reusable components. Built core modules including Admin Panel, CMS, Authentication, and Contact Forms for dynamic content management and secure access. Managed global state with Context API, implemented client-side routing with React Router, and integrated REST APIs via Axios. Converted Figma designs into responsive, production-ready UI ensuring design consistency across devices."]
   },
 
   {
     role: "Frontend Developer Intern",
     logo: "/projects/nerdtech.png",
     company: "NerdTech Lcc",
+    tech: [
+      { name: "React", icon: <SiReact className="text-blue-400 w-5 h-5" /> },
+      { name: "Tailwind css", icon: <SiTailwindcss className="text-blue-400 w-5 h-5" /> },
+      { name: "React Router", icon: <SiReact className="text-blue-300 w-5 h-5" /> },
+      { name: "Fetch API", icon: <SiJavascript className="text-yellow-400 w-5 h-5" /> },
+    ],
     duration: "July 2025 - October 2025",
     description: [
-      "Built and maintained a client website with React.js and Tailwind CSS.",
-      "Integrated REST APIs for dynamic product data.",
-      "Worked with the team to add features, fix bugs, and improve UI/UX.",
-      "Used Git for version control in collaborative workflows."
+      "Developed a React.js and Tailwind CSS E-Commerce app with modular components. Built Product Listing, Shopping Cart, and Checkout workflows using Context API. Integrated REST APIs for dynamic data and optimized performance with lazy loading and memoization."
     ],
   },
   // Add more experiences here if needed
 ];
 
 const ExperienceSection = () => {
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.3,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-  };
-
+  const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <section id="experience" className="py-16 px-3 sm:px-4 md:py-20">
-      <div className="max-w-4xl mx-auto">
-        {/* Section Heading */}
-        <h2
-          className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-        >
-          Work <span className="text-primary">Experience</span>
+    <section id="experience" className="py-20 px-4">
+      <div className="container mx-auto md:w-6xl">
+
+        {/* Heading */}
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white">
+          My <span className="text-primary">Experience</span>
         </h2>
 
-        {/* Experience Cards */}
-        <div
-          className="space-y-4 sm:space-y-6"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={containerVariants}
-        >
-          {experienceData.map((exp, index) => (
-            <div
-              key={index}
-              className="border border-border rounded-2xl p-3 sm:p-5 shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-              variants={cardVariants}
-            >
-              {/* Header: Logo + Role/Company + Duration */}
-              <div className="flex flex-row flex-wrap justify-between items-center gap-2 sm:gap-4">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="p-2 rounded-full flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
-                    {exp.logo && (
-                      <img
-                        src={exp.logo}
-                        alt={`${exp.company} logo`}
-                        className="w-6 h-6 sm:w-8 sm:h-8 object-contain"
-                      />
-                    )}
-                  </div>
-                  <div>
-                    <h3 className="text-base sm:text-lg font-semibold">{exp.role}</h3>
-                    <p className="text-xs sm:text-sm text-muted-foreground">{exp.company}</p>
-                  </div>
+        {/* Timeline */}
+        <div className="relative border-l-3 border-primary pl-10 space-y-10">
+          {experienceData.map((exp, index) => {
+            const isOpen = activeIndex === index;
+
+            return (
+              <div key={index} className="relative pl-0 md:pl-20">
+                {/* Logo */}
+                <div
+                  className=" absolute left-0 md:left-[-4.25rem] -translate-x-16/12 md:translate-x-0 z-10 mb-4 md:mb-0 top-1/2 md:top-1/2 -translate-y-1/2 flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-card border border-primary overflow-hidden shadow-md"
+                >
+                  <img
+                    src={exp.logo}
+                    alt={exp.company}
+                    className="w-8 h-8 md:w-10 md:h-10 object-contain"
+                  />
                 </div>
 
-                <span className="text-xs sm:text-sm px-2 py-1 rounded-md bg-secondary text-foreground font-medium border border-gray-700 mt-2 sm:mt-0">
-                  {exp.duration}
-                </span>
-              </div>
+                {/* Card */}
+                <div
+                  className=" border border-border rounded-xl p-4 sm:p-5 md:p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-card cursor-pointer"
+                  onClick={() => setActiveIndex(isOpen ? null : index)}
+                >
+                  {/* Top Row */}
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <div>
+                      <h3 className="text-base sm:text-lg md:text-xl font-semibold text-primary">
+                        {exp.role}
+                      </h3>
 
-              <hr className="mt-3 border-t border-gray-300/40" />
+                      <p className="text-sm sm:text-base font-medium text-white mt-1">
+                        {exp.company}
+                      </p>
+                    </div>
 
-              {/* Description */}
-              <div className="mt-4 sm:mt-4 text-muted-foreground leading-relaxed space-y-2 sm:space-y-2 text-sm sm:text-base text-left">
-                {exp.description.map((point, idx) => (
-                  <p key={idx} className="flex items-start gap-2">
-                    <span className="mt-2 w-2 h-2 bg-primary rounded-full flex-shrink-0"></span>
-                    {point}
-                  </p>
-                ))}
+                    <div className="text-left sm:text-right">
+                      <p className="text-xs sm:text-sm text-white">
+                        {exp.duration}
+                      </p>
+
+                      {exp.current && (
+                        <span className="inline-block mt-2 text-xs px-3 py-1 bg-primary/15 text-primary rounded-full">
+                          Current
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2 md:gap-3 mt-4">
+                    {exp.tech.map((t, i) => (
+                      <span
+                        key={i}
+                        className="
+            flex items-center gap-1
+            bg-white/5 border border-border
+            rounded-full px-2 sm:px-3 py-1
+            text-xs sm:text-sm
+            text-foreground/80
+          "
+                      >
+                        {t.icon}
+                        <span>{t.name}</span>
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Accordion Content */}
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.ul
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden text-left mt-5 space-y-2 text-sm md:text-base text-white leading-relaxed"
+                      >
+                        {exp.description.map((point, i) => (
+                          <li key={i}>{point}</li>
+                        ))}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
+
   );
 };
 

@@ -7,7 +7,7 @@ const HeroSection = () => {
             id="hero"
             className="relative min-h-[70vh] md:min-h-screen flex flex-col items-center justify-center md:pt-0"
         >
-            <div className="container max-w-4xl mx-auto text-center z-10">
+            <div className="container max-w-6xl mx-auto text-center z-10">
                 <motion.div
                     className="space-y-6"
                     initial="hidden"
@@ -31,7 +31,7 @@ const HeroSection = () => {
                     >
                         <span className="text-white">Hi, I'm</span>
                         <span className="text-primary ml-2">Anil</span>
-                        <span className="text-gradient ml-2">Yadav</span>
+                        <span className="text-white ml-2">Yadav</span>
                     </motion.h1>
 
                     <motion.p
@@ -72,6 +72,17 @@ const HeroSection = () => {
                 </span>
                 <ArrowDown className="h-6 w-6 md:h-7 md:w-7 text-white" aria-hidden="true" />
             </motion.div>
+
+            {/* <div className="flex flex-col sm:flex-row gap-6 pt-6 justify-center md:justify-start">
+                            <a
+                                href="/Anil_Yadav_Resume.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-8 py-4 rounded-full border border-primary text-primary text-lg font-medium hover:bg-primary/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 hover:shadow-[0_0_15px_rgba(139,92,246,0.4)]"
+                            >
+                                Download CV
+                            </a>
+                        </div> */}
         </section>
     );
 };
