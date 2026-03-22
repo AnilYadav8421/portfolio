@@ -1,38 +1,7 @@
 import { Briefcase, Code, User } from "lucide-react";
-import plus from "../assets/svgs/plusSvg.svg";
-import percent from "../assets/svgs/percentSvg.svg";
+import Stats from "./Stats";
 
 const AboutSection = () => {
-    const targets = [
-        { element: document.getElementById('starsCount'), count: 4670, suffix: '+' },
-        { element: document.getElementById('downloadsCount'), count: 80000, suffix: '+' },
-        { element: document.getElementById('sponsorsCount'), count: 100, suffix: '+' }
-    ];
-
-    // Find the maximum count among all targets
-    const maxCount = Math.max(...targets.map(target => target.count));
-
-    // Function to animate count-up effect
-    function animateCountUp(target, duration) {
-        let currentCount = 0;
-        const increment = Math.ceil(target.count / (duration / 10));
-
-        const interval = setInterval(() => {
-            currentCount += increment;
-            if (currentCount >= target.count) {
-                clearInterval(interval);
-                currentCount = target.count;
-                target.element.textContent = currentCount + target.suffix;
-            } else {
-                target.element.textContent = currentCount;
-            }
-        }, 10);
-    }
-
-    // Animate count-up for each target with adjusted duration
-    targets.forEach(target => {
-        animateCountUp(target, maxCount / 100); // Adjust duration based on max count
-    });
     const skills = [
         {
             icon: <Code className="h-6 w-6 text-primary" />,
@@ -84,46 +53,7 @@ const AboutSection = () => {
                         </div>
 
                         {/* Stats */}
-                        <div className="mt-12 flex  sm:flex-row justify-between items-center gap-8 p-8 md:p-10 rounded-2xl gradient-border text-center">
-                            {/* Projects */}
-                            <div className="flex flex-col items-center">
-                                <div className="flex items-baseline gap-1">
-                                    <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
-                                        10
-                                    </h2>
-                                    <img src={plus} alt="plus icon" className="w-5 md:w-7" />
-                                </div>
-                                <p className="mt-2 text-sm md:text-base text-muted-foreground">
-                                    Completed Projects
-                                </p>
-                            </div>
-
-                            {/* Satisfaction */}
-                            <div className="flex flex-col items-center">
-                                <div className="flex items-baseline gap-1">
-                                    <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
-                                        95
-                                    </h2>
-                                    <img src={percent} alt="percentage icon" className="w-5 md:w-7" />
-                                </div>
-                                <p className="mt-2 text-sm md:text-base text-muted-foreground">
-                                    Client Satisfaction
-                                </p>
-                            </div>
-
-                            {/* Experience */}
-                            <div className="flex flex-col items-center">
-                                <div className="flex items-baseline gap-1">
-                                    <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
-                                        1
-                                    </h2>
-                                    <img src={plus} alt="plus icon" className="w-5 md:w-7" />
-                                </div>
-                                <p className="mt-2 text-sm md:text-base text-muted-foreground">
-                                    Years of Experience
-                                </p>
-                            </div>
-                        </div>
+                        <Stats/>
                     </div>
 
                     {/* Right Skills */}
