@@ -46,9 +46,9 @@ const Home = () => {
             <main className="relative z-10">
                 <HeroSection />
                 <AboutSection />
+                <SkillsSection />
                 <ExperienceSection />
                 <ProjectsSection />
-                <SkillsSection />
                 <EducationSection />
                 <ContactSection />
             </main>

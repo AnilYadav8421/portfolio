@@ -97,14 +97,15 @@ const Navbar = () => {
 
                             {/* CTA Button */}
                             <a
-                                href="#contact"
+                                href="https://www.linkedin.com/in/anilyadav12/"
+                                target="_blank"
                                 role="button"
                                 className="cosmic-button text-white px-6 py-2 text-base font-semibold
                                 focus:outline-none focus:ring-2 focus:ring-primary
                                 focus:ring-offset-2 transition-transform transform
                                 hover:scale-105 hover:shadow-[0_0_20px_rgba(139,92,246,0.5)]"
                             >
-                                Get In Touch
+                                Let's talk
                             </a>
                         </div>
 

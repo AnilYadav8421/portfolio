@@ -5,11 +5,11 @@ import {projects} from '../Data/projectData.js'
 const Projects = () => {
     return (
         <section id="projects" className="py-24 px-4 bg-gray-900 relative">
-            <div className="container mx-auto max-w-5xl">
+            <div className="container mx-auto max-w-7xl">
                 <h2
                     className="text-3xl text-white md:text-4xl font-bold mb-12 text-center"
                 >
-                    Featured <span className="text-primary">Projects</span>
+                    All <span className="text-primary">Projects</span>
                 </h2>
 
                 <div

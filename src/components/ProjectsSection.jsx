@@ -7,6 +7,7 @@ const featuredProjects = projects.slice(0, 4);
 const ProjectsSection = () => {
     return (
         <section id="projects" className="py-24 px-4 relative">
+
             <div className="container mx-auto max-w-5xl">
                 <h2
                     className="text-3xl md:text-4xl font-bold mb-12 text-center"
@@ -32,9 +33,9 @@ const ProjectsSection = () => {
                                 <div className="flex justify-between items-start">
                                     <h3 className="text-lg sm:text-xl font-semibold">
                                         {project.title}
-                                        <div className="text-xs rounded-full mt-1 text-left text-muted-foreground">
+                                        {/* <div className="text-xs rounded-full mt-1 text-left text-muted-foreground">
                                             {project.date}
-                                        </div>
+                                        </div> */}
                                     </h3>
                                     <div className="flex gap-3 mt-1">
                                         <a
@@ -64,8 +65,7 @@ const ProjectsSection = () => {
                     ))}
                 </div>
 
-
-                <div className="flex flex-col gap-2 md:justify-around mt-12">
+                <div className="flex flex-col md:flex-row gap-2 md:justify-around mt-12">
                     <div>
                         <a
                             className="cosmic-button md:w-52   flex justify-center items-center mx-auto gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
