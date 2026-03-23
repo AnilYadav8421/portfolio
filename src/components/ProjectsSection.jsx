@@ -21,11 +21,11 @@ const ProjectsSection = () => {
                             key={project.id}
                             className="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-transform duration-300 border border-border"
                         >
-                            <div className="w-full aspect-w-16 aspect-h-9 overflow-hidden">
+                            <div className="w-full aspect-w-16 p-5 aspect-h-9 overflow-hidden">
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-full object-cover transition-transform duration-300"
+                                    className="w-full rounded-xl h-full object-cover transition-transform duration-300"
                                 />
                             </div>
 

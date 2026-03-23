@@ -16,7 +16,7 @@ const Footer = () => {
                 {/* Right: Scroll to Top + Socials */}
                 <div className="flex items-center gap-4">
                     {/* Social Links */}
-                    <a
+                    {/* <a
                         href="https://www.linkedin.com/in/anil-yadav-3111a9268/"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -31,7 +31,7 @@ const Footer = () => {
                         className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-transform transform hover:scale-110"
                     >
                         <Twitter size={25} />
-                    </a>
+                    </a> */}
 
                     {/* Scroll to Top */}
                     {/* <a

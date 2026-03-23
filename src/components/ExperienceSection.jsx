@@ -73,17 +73,17 @@ const ExperienceSection = () => {
                   {/* Top Row */}
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                     <div>
-                      <h3 className="text-base sm:text-lg md:text-xl font-semibold text-primary">
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-primary">
                         {exp.role}
                       </h3>
 
-                      <p className="text-sm sm:text-base font-medium text-white mt-1">
+                      <p className="text-sm sm:text-base font-semibold text-white md:text-left mt-2">
                         {exp.company}
                       </p>
                     </div>
 
                     <div className="text-left sm:text-right">
-                      <p className="text-xs sm:text-sm text-white">
+                      <p className="text-xs sm:text-base text-white">
                         {exp.duration}
                       </p>
 
@@ -100,13 +100,7 @@ const ExperienceSection = () => {
                     {exp.tech.map((t, i) => (
                       <span
                         key={i}
-                        className="
-            flex items-center gap-1
-            bg-white/5 border border-border
-            rounded-full px-2 sm:px-3 py-1
-            text-xs sm:text-sm
-            text-foreground/80
-          "
+                        className=" flex items-center gap-1 bg-white/8 border border-border rounded-full px-2 sm:px-3 py-1 text-xs sm:text-sm text-white"
                       >
                         {t.icon}
                         <span>{t.name}</span>
