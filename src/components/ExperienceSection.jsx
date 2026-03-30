@@ -4,9 +4,9 @@ import { SiReact, SiJavascript, SiTailwindcss, SiAxios, SiFigma } from "react-ic
 
 const experienceData = [
   {
-    role: "React.js Developer Intern (Frontend)",
-    logo: "/projects/anstric.avif",
-    company: "Anstric Games Pvt. Ltd.",
+    role: "Frontend Developer",
+    logo: "/projects/nerdtech.png",
+    company: "NerdTech Lcc",
     tech: [
       { name: "React", icon: <SiReact className="text-blue-400 w-5 h-5" /> },
       { name: "Tailwind css", icon: <SiTailwindcss className="text-blue-400 w-5 h-5" /> },
@@ -14,21 +14,21 @@ const experienceData = [
       { name: "Axios", icon: <SiAxios className="text-blue-500 w-5 h-5" /> },
       { name: "Figma", icon: <SiFigma className="text-pink-500 w-5 h-5" /> },
     ],
-    duration: "November 2025 - Present",
+    duration: "May 2025 - Feb 2026",
     description: ["Developed a CMS-driven web platform using React.js with modular, reusable components. Built core modules including Admin Panel, CMS, Authentication, and Contact Forms for dynamic content management and secure access. Managed global state with Context API, implemented client-side routing with React Router, and integrated REST APIs via Axios. Converted Figma designs into responsive, production-ready UI ensuring design consistency across devices."]
   },
 
   {
-    role: "Frontend Developer Intern",
-    logo: "/projects/nerdtech.png",
-    company: "NerdTech Lcc",
+    role: "React.js Developer Intern",
+    logo: "/projects/anstric.avif",
+    company: "Anstric Games Pvt. Ltd.",
     tech: [
       { name: "React", icon: <SiReact className="text-blue-400 w-5 h-5" /> },
       { name: "Tailwind css", icon: <SiTailwindcss className="text-blue-400 w-5 h-5" /> },
       { name: "React Router", icon: <SiReact className="text-blue-300 w-5 h-5" /> },
       { name: "Fetch API", icon: <SiJavascript className="text-yellow-400 w-5 h-5" /> },
     ],
-    duration: "July 2025 - October 2025",
+    duration: "Feb 2025 - April 2025",
     description: [
       "Developed a React.js and Tailwind CSS E-Commerce app with modular components. Built Product Listing, Shopping Cart, and Checkout workflows using Context API. Integrated REST APIs for dynamic data and optimized performance with lazy loading and memoization."
     ],
@@ -73,11 +73,11 @@ const ExperienceSection = () => {
                   {/* Top Row */}
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                     <div>
-                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-primary">
+                      <h3 className="text-base text-left sm:text-lg md:text-xl font-bold text-primary">
                         {exp.role}
                       </h3>
 
-                      <p className="text-sm sm:text-base font-semibold text-white md:text-left mt-2">
+                      <p className="text-sm sm:text-base font-semibold text-white text-left mt-2">
                         {exp.company}
                       </p>
                     </div>

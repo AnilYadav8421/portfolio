@@ -25,13 +25,13 @@ const ProjectsSection = () => {
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full rounded-xl h-full object-cover transition-transform duration-300"
+                                    className="w-full rounded-lg h-full object-cover hover:scale-105 hover:rotate-2 transition-transform duration-300"
                                 />
                             </div>
 
                             <div className="p-5 flex flex-col gap-3">
                                 <div className="flex justify-between items-start">
-                                    <h3 className="text-lg sm:text-xl font-semibold">
+                                    <h3 className="text-lg sm:text-xl font-bold">
                                         {project.title}
                                         {/* <div className="text-xs rounded-full mt-1 text-left text-muted-foreground">
                                             {project.date}

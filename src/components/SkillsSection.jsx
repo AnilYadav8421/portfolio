@@ -14,6 +14,8 @@ const skills = [
   { name: "VS Code", category: "tools", logo: "/projects/vscode.png" },
   { name: "Figma", category: "tools", logo: "/projects/figma.png" },
   { name: "Postman", category: "tools", logo: "/projects/Postman.png" },
+  { name: "Express.js", category: "backend", logo: "/projects/Express.png" },
+  { name: "MongoDB", category: "backend", logo: "/projects/MongoDB.svg" },
 ];
 
 const categories = ["All", ...new Set(skills.map(skill => skill.category))];

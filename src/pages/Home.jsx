@@ -49,7 +49,7 @@ const Home = () => {
                 <SkillsSection />
                 <ExperienceSection />
                 <ProjectsSection />
-                <EducationSection />
+                {/* <EducationSection /> */}
                 <ContactSection />
             </main>
             <Footer />
@@ -57,7 +57,7 @@ const Home = () => {
             {showTopButton && (
                 <button
                     onClick={scrollToTop}
-                    className="fixed cursor-pointer bottom-6 right-6 z-50 w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center rounded-full cosmic-button text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-transform transform hover:scale-105 hover:shadow-[0_0_20px_rgba(139,92,246,0.5)]"
+                    className="fixed hidden md:flex cursor-pointer bottom-6 right-6 z-50 w-12 h-12 lg:w-14 lg:h-14 items-center justify-center rounded-full cosmic-button text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-transform transform hover:scale-105 hover:shadow-[0_0_20px_rgba(139,92,246,0.5)]"
                     aria-label="Back to top"
                 >
                     {/* SVG Circle for progress */}

@@ -5,7 +5,7 @@ const HeroSection = () => {
     return (
         <section
             id="hero"
-            className="relative min-h-[70vh] md:min-h-screen flex flex-col items-center justify-center md:pt-0"
+            className="relative min-h-screen md:min-h-screen flex flex-col items-center justify-center md:pt-0"
         >
             <div className="container max-w-6xl mx-auto text-center z-10">
                 <motion.div
@@ -51,11 +51,16 @@ const HeroSection = () => {
                         }}
                     >
                         <a
-                            href="#projects"
+                            href="#"
                             role="button"
-                            className="cosmic-button focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                            className="header-button relative inline-block overflow-hidden focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                         >
-                            View My Work
+                            View My Resume
+
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </a>
                     </motion.div>
                 </motion.div>

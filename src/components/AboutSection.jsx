@@ -57,7 +57,7 @@ const AboutSection = () => {
                     </div>
 
                     {/* Right Skills */}
-                    <div className="grid gap-6">
+                    <div className=" hidden md:grid gap-6">
                         {skills.map((skill, index) => (
                             <article
                                 key={index}

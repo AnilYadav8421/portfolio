@@ -12,35 +12,6 @@ const Footer = () => {
                         - Built by Anil Yadav
                     </span>
                 </p>
-
-                {/* Right: Scroll to Top + Socials */}
-                <div className="flex items-center gap-4">
-                    {/* Social Links */}
-                    {/* <a
-                        href="https://www.linkedin.com/in/anil-yadav-3111a9268/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-transform transform hover:scale-110"
-                    >
-                        <Linkedin size={25} />
-                    </a>
-                    <a
-                        href="https://x.com/anilyadav1108"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-transform transform hover:scale-110"
-                    >
-                        <Twitter size={25} />
-                    </a> */}
-
-                    {/* Scroll to Top */}
-                    {/* <a
-                        href="#hero"
-                        className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-transform transform hover:scale-110"
-                    >
-                        <ArrowUp size={25} />
-                    </a> */}
-                </div>
             </div>
         </footer>
     );
