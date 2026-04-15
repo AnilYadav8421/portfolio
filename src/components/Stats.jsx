@@ -1,17 +1,23 @@
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 function useCountUp(target, duration = 2000, start = false) {
     const [count, setCount] = useState(0);
 
     useEffect(() => {
         if (!start) return;
+
         let startTime = null;
+
         const step = (timestamp) => {
             if (!startTime) startTime = timestamp;
+
             const progress = Math.min((timestamp - startTime) / duration, 1);
             setCount(Math.floor(progress * target));
+
             if (progress < 1) requestAnimationFrame(step);
         };
+
         requestAnimationFrame(step);
     }, [start, target, duration]);
 
@@ -32,7 +38,9 @@ export default function Stats() {
             },
             { threshold: 0.3 }
         );
+
         if (ref.current) observer.observe(ref.current);
+
         return () => observer.disconnect();
     }, []);
 
@@ -40,51 +48,67 @@ export default function Stats() {
     const satisfaction = useCountUp(95, 2000, hasStarted);
     const experience = useCountUp(1, 1000, hasStarted);
 
+    const container = {
+        hidden: {},
+        show: {
+            transition: {
+                staggerChildren: 0.15,
+            },
+        },
+    };
+
+    const item = {
+        hidden: { opacity: 0, y: 20 },
+        show: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: [0.22, 1, 0.36, 1],
+            },
+        },
+    };
+
     return (
-        <div
+        <motion.div
             ref={ref}
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
             className="mt-12 flex sm:flex-row justify-between items-center gap-8 p-8 md:p-10 rounded-2xl gradient-border text-center"
         >
+
             {/* Projects */}
-            <div className="flex flex-col items-center">
-                <div className="flex items-baseline gap-1">
-                    <div>
-                        <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
-                            {projects}<span className="text-primary">+</span>
-                        </h2>
-                    </div>
-                </div>
+            <motion.div variants={item} className="flex flex-col items-center">
+                <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
+                    {projects}<span className="text-primary">+</span>
+                </h2>
                 <p className="mt-2 text-sm md:text-base text-muted-foreground">
                     Completed Projects
                 </p>
-            </div>
+            </motion.div>
 
             {/* Satisfaction */}
-            <div className="flex flex-col items-center">
-                <div className="flex items-baseline gap-1">
-                    <div className="flex items-center">
-                        <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
-                            {satisfaction}<span className="text-primary font-bold text-4xl">%</span>
-                        </h2>
-                    </div>
-
-                </div>
+            <motion.div variants={item} className="flex flex-col items-center">
+                <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
+                    {satisfaction}<span className="text-primary">%</span>
+                </h2>
                 <p className="mt-2 text-sm md:text-base text-muted-foreground">
                     Client Satisfaction
                 </p>
-            </div>
+            </motion.div>
 
             {/* Experience */}
-            <div className="flex flex-col items-center">
-                <div className="flex items-baseline gap-1">
-                    <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
-                        {experience}<span className="text-primary">+</span>
-                    </h2>
-                </div>
+            <motion.div variants={item} className="flex flex-col items-center">
+                <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
+                    {experience}<span className="text-primary">+</span>
+                </h2>
                 <p className="mt-2 text-sm md:text-base text-muted-foreground">
                     Years of Experience
                 </p>
-            </div>
-        </div>
+            </motion.div>
+
+        </motion.div>
     );
 }

@@ -1,5 +1,7 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Suspense, lazy, useState, useEffect } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { Suspense, lazy } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
 import Projects from "./pages/Projects";
 
 const Home = lazy(() => import("./pages/Home"));
@@ -14,25 +16,60 @@ const FallbackLoader = () => (
   </div>
 );
 
-const App = () => {
-  const [showLoader, setShowLoader] = useState(true);
+function PageWrapper({ children }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -12 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
-  useEffect(() => {
-    const timer = setTimeout(() => setShowLoader(false), 1000); // 1 sec delay
-    return () => clearTimeout(timer);
-  }, []);
+function AnimatedRoutes() {
+  const location = useLocation();
 
   return (
-    <BrowserRouter>
-      <Suspense fallback={showLoader ? <FallbackLoader /> : null}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/all_project" element={<Projects />} />
-          <Route path="*" element={<NotFound />} />
+    <AnimatePresence mode="wait">
+      <Suspense fallback={<FallbackLoader />}>
+        <Routes location={location} key={location.pathname}>
+          <Route
+            path="/"
+            element={
+              <PageWrapper>
+                <Home />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/all_project"
+            element={
+              <PageWrapper>
+                <Projects />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <PageWrapper>
+                <NotFound />
+              </PageWrapper>
+            }
+          />
         </Routes>
       </Suspense>
+    </AnimatePresence>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AnimatedRoutes />
     </BrowserRouter>
   );
-};
-
-export default App;
+}

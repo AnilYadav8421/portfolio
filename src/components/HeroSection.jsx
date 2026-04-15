@@ -1,93 +1,91 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 
+const container = {
+    hidden: {},
+    show: {
+        transition: {
+            staggerChildren: 0.18,
+        },
+    },
+};
+
+const item = {
+    hidden: { opacity: 0, y: 24 },
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.7,
+            ease: [0.22, 1, 0.36, 1],
+        },
+    },
+};
+
 const HeroSection = () => {
     return (
         <section
             id="hero"
-            className="relative min-h-screen md:min-h-screen flex flex-col items-center justify-center md:pt-0"
+            className="relative min-h-screen flex flex-col items-center justify-center"
         >
             <div className="container max-w-6xl mx-auto text-center z-10">
+
                 <motion.div
-                    className="space-y-6"
+                    variants={container}
                     initial="hidden"
-                    animate="visible"
-                    variants={{
-                        hidden: {},
-                        visible: {
-                            transition: {
-                                staggerChildren: 0.3,
-                            },
-                        },
-                    }}
+                    animate="show"
+                    className="space-y-6"
                 >
+
+                    {/* Heading */}
                     <motion.h1
-                        className="text-3xl md:text-8xl font-bold tracking-tight"
+                        variants={item}
+                        className="text-4xl md:text-7xl font-bold tracking-tight"
                         aria-label="Hi, I'm Anil Yadav"
-                        variants={{
-                            hidden: { opacity: 0, y: -20 },
-                            visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-                        }}
                     >
-                        <span className="text-white">Hi, I'm</span>
-                        <span className="text-primary ml-2">Anil</span>
-                        <span className="text-white ml-2">Yadav</span>
+                        Hi, I’m{" "}
+                        <span className="text-primary">Anil Yadav</span>
                     </motion.h1>
 
+                    {/* Subtext */}
                     <motion.p
-                        className="text-base sm:text-sm md:text-xl text-muted-foreground max-w-2xl sm:max-w-3xl md:max-w-5xl sm:px-6 mx-auto text-center"
-                        variants={{
-                            hidden: { opacity: 0, y: 20 },
-                            visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-                        }}
+                        variants={item}
+                        className="text-sm md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed"
                     >
-                        Have a project you want to collaborate on, or looking for a talented and versatile frontend developer?
+                        Have a project you want to collaborate on, or looking for a
+                        frontend developer who builds clean, fast, and scalable web
+                        experiences?
                     </motion.p>
 
-                    <motion.div
-                        variants={{
-                            hidden: { opacity: 0, y: 20 },
-                            visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-                        }}
-                    >
+                    {/* CTA */}
+                    <motion.div variants={item}>
                         <a
                             href="#"
-                            role="button"
-                            className="header-button relative inline-block overflow-hidden focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                            className="relative inline-flex px-6 py-3 rounded-xl border border-primary/40 text-primary hover:bg-primary/10 transition focus:outline-none focus:ring-2 focus:ring-primary"
                         >
                             View My Resume
-
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
                         </a>
                     </motion.div>
+
                 </motion.div>
             </div>
 
             {/* Scroll indicator */}
             <motion.div
-                className="absolute bottom-8 md:bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center"
                 animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
+                transition={{
+                    duration: 1.6,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                }}
             >
-                <span className="text-sm md:text-lg text-muted-foreground mb-2">
-                    Scroll
+                <span className="text-xs tracking-widest text-muted-foreground mb-2">
+                    SCROLL
                 </span>
-                <ArrowDown className="h-6 w-6 md:h-7 md:w-7 text-white" aria-hidden="true" />
+                <ArrowDown className="h-6 w-6 text-primary" />
             </motion.div>
 
-            {/* <div className="flex flex-col sm:flex-row gap-6 pt-6 justify-center md:justify-start">
-                            <a
-                                href="/Anil_Yadav_Resume.pdf"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-8 py-4 rounded-full border border-primary text-primary text-lg font-medium hover:bg-primary/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 hover:shadow-[0_0_15px_rgba(139,92,246,0.4)]"
-                            >
-                                Download CV
-                            </a>
-                        </div> */}
         </section>
     );
 };

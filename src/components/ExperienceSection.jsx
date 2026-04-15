@@ -33,14 +33,42 @@ const experienceData = [
       "Developed a React.js and Tailwind CSS E-Commerce app with modular components. Built Product Listing, Shopping Cart, and Checkout workflows using Context API. Integrated REST APIs for dynamic data and optimized performance with lazy loading and memoization."
     ],
   },
-  // Add more experiences here if needed
 ];
+
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 const ExperienceSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+
   return (
     <section id="experience" className="py-20 px-4">
-      <div className="container mx-auto md:w-6xl">
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6 }}
+        className="container mx-auto md:w-6xl"
+      >
 
         {/* Heading */}
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white">
@@ -48,41 +76,60 @@ const ExperienceSection = () => {
         </h2>
 
         {/* Timeline */}
-        <div className="relative border-l-3 border-primary pl-10 space-y-10">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="relative border-l-3 border-primary pl-10 space-y-10"
+        >
+
           {experienceData.map((exp, index) => {
             const isOpen = activeIndex === index;
 
             return (
-              <div key={index} className="relative pl-0 md:pl-20">
+              <motion.div
+                key={index}
+                variants={item}
+                whileHover={{ y: -4 }}
+                className="relative pl-0 md:pl-20"
+              >
+
                 {/* Logo */}
-                <div
-                  className=" absolute left-0 md:left-[-4.25rem] -translate-x-16/12 md:translate-x-0 z-10 mb-4 md:mb-0 top-1/2 md:top-1/2 -translate-y-1/2 flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-card border border-primary overflow-hidden shadow-md"
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 200 }}
+                  className="absolute left-0 md:left-[-4.25rem] -translate-x-16/12 md:translate-x-0 z-10 mb-4 md:mb-0 top-1/2 -translate-y-1/2 flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-card border border-primary overflow-hidden shadow-md"
                 >
                   <img
                     src={exp.logo}
                     alt={exp.company}
                     className="w-8 h-8 md:w-10 md:h-10 object-contain"
                   />
-                </div>
+                </motion.div>
 
                 {/* Card */}
-                <div
-                  className=" border border-border rounded-xl p-4 sm:p-5 md:p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-card cursor-pointer"
+                <motion.div
+                  whileHover={{ y: -3 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 18 }}
+                  className="border border-border rounded-xl p-4 sm:p-5 md:p-6 shadow-md hover:shadow-xl bg-card cursor-pointer"
                   onClick={() => setActiveIndex(isOpen ? null : index)}
                 >
+
                   {/* Top Row */}
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+
                     <div>
-                      <h3 className="text-base text-left sm:text-lg md:text-xl font-bold text-primary">
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-primary">
                         {exp.role}
                       </h3>
 
-                      <p className="text-sm sm:text-base font-semibold text-white text-left mt-2">
+                      <p className="text-sm sm:text-base font-semibold text-white mt-2">
                         {exp.company}
                       </p>
                     </div>
 
-                    <div className="text-left sm:text-right">
+                    <div>
                       <p className="text-xs sm:text-base text-white">
                         {exp.duration}
                       </p>
@@ -93,22 +140,27 @@ const ExperienceSection = () => {
                         </span>
                       )}
                     </div>
+
                   </div>
 
                   {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2 md:gap-3 mt-4">
+                  <motion.div
+                    initial={false}
+                    className="flex flex-wrap gap-2 md:gap-3 mt-4"
+                  >
                     {exp.tech.map((t, i) => (
-                      <span
+                      <motion.span
                         key={i}
-                        className=" flex items-center gap-1 bg-white/8 border border-border rounded-full px-2 sm:px-3 py-1 text-xs sm:text-sm text-white"
+                        whileHover={{ scale: 1.05 }}
+                        className="flex items-center gap-1 bg-white/8 border border-border rounded-full px-2 sm:px-3 py-1 text-xs sm:text-sm text-white"
                       >
                         {t.icon}
                         <span>{t.name}</span>
-                      </span>
+                      </motion.span>
                     ))}
-                  </div>
+                  </motion.div>
 
-                  {/* Accordion Content */}
+                  {/* Accordion */}
                   <AnimatePresence>
                     {isOpen && (
                       <motion.ul
@@ -124,14 +176,17 @@ const ExperienceSection = () => {
                       </motion.ul>
                     )}
                   </AnimatePresence>
-                </div>
-              </div>
+
+                </motion.div>
+
+              </motion.div>
             );
           })}
-        </div>
-      </div>
-    </section>
 
+        </motion.div>
+
+      </motion.div>
+    </section>
   );
 };
 
