@@ -3,18 +3,23 @@ import { cn } from "../lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
 const skills = [
+  { name: "Java", category: "backend", logo: "/Java_svg.svg" },
+  { name: "Spring Boot", category: "backend", logo: "/SpringBoot_svg.svg" },
+  { name: "SQL", category: "backend", logo: "/SQL_svg.svg" },
+  { name: "PostgreSQL", category: "backend", logo: "/PostgresSQL_svg.svg" },
+  { name: "Hibernate", category: "backend", logo: "/Hibernate_svg.svg" },
+  { name: "REST APIs", category: "backend", logo: null },
+  { name: "Maven", category: "tools", logo: "/Maven_svg.svg" },
+  { name: "IntelliJ IDEA", category: "tools", logo: "/IntelliJ.svg" },
   { name: "HTML", category: "frontend", logo: "/projects/html.png" },
   { name: "CSS", category: "frontend", logo: "/projects/css.png" },
   { name: "JavaScript", category: "frontend", logo: "/projects/js.png" },
   { name: "React", category: "frontend", logo: "/projects/react.png" },
   { name: "Tailwind CSS", category: "frontend", logo: "/projects/tailwind.png" },
   { name: "Bootstrap", category: "frontend", logo: "/projects/bootstrap.png" },
-  { name: "Node.js", category: "backend", logo: "/projects/node.png" },
-  { name: "Express.js", category: "backend", logo: "/projects/Express.png" },
   { name: "MongoDB", category: "backend", logo: "/projects/MongoDB.svg" },
   { name: "Git/GitHub", category: "tools", logo: "/projects/github.png" },
   { name: "VS Code", category: "tools", logo: "/projects/vscode.png" },
-  { name: "Figma", category: "tools", logo: "/projects/figma.png" },
   { name: "Postman", category: "tools", logo: "/projects/Postman.png" },
 ];
 
@@ -102,11 +107,17 @@ export default function SkillsSection() {
                 className="border border-border rounded-xl p-4 flex flex-col items-center gap-3 bg-card hover:shadow-lg"
               >
 
-                <img
-                  src={skill.logo}
-                  alt={skill.name}
-                  className="w-12 h-12 object-contain"
-                />
+                {skill.logo ? (
+                  <img
+                    src={skill.logo}
+                    alt={skill.name}
+                    className="w-12 h-12 object-contain"
+                  />
+                ) : (
+                  <span className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/15 text-primary text-sm font-bold">
+                    {skill.name === "Spring Boot" ? "SB" : skill.name === "REST APIs" ? "API" : skill.name}
+                  </span>
+                )}
 
                 <h3 className="text-sm md:text-base font-semibold text-center">
                   {skill.name}

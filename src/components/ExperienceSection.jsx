@@ -14,7 +14,7 @@ const experienceData = [
       { name: "Axios", icon: <SiAxios className="text-blue-500 w-5 h-5" /> },
       { name: "Figma", icon: <SiFigma className="text-pink-500 w-5 h-5" /> },
     ],
-    duration: "May 2025 - Feb 2026",
+    duration: "Sept 2025 - Feb 2026",
     description: ["Developed a CMS-driven web platform using React.js with modular, reusable components. Built core modules including Admin Panel, CMS, Authentication, and Contact Forms for dynamic content management and secure access. Managed global state with Context API, implemented client-side routing with React Router, and integrated REST APIs via Axios. Converted Figma designs into responsive, production-ready UI ensuring design consistency across devices."]
   },
 
@@ -28,7 +28,7 @@ const experienceData = [
       { name: "React Router", icon: <SiReact className="text-blue-300 w-5 h-5" /> },
       { name: "Fetch API", icon: <SiJavascript className="text-yellow-400 w-5 h-5" /> },
     ],
-    duration: "Feb 2025 - April 2025",
+    duration: "June 2025 - Aug 2025",
     description: [
       "Developed a React.js and Tailwind CSS E-Commerce app with modular components. Built Product Listing, Shopping Cart, and Checkout workflows using Context API. Integrated REST APIs for dynamic data and optimized performance with lazy loading and memoization."
     ],

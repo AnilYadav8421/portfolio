@@ -41,7 +41,7 @@ const HeroSection = () => {
                     <motion.h1
                         variants={item}
                         className="text-4xl md:text-7xl font-bold tracking-tight"
-                        aria-label="Hi, I'm Anil Yadav"
+                        aria-label="Hi, I'm Anil Yadav, a Java Developer"
                     >
                         Hi, I’m{" "}
                         <span className="text-primary">Anil Yadav</span>
@@ -52,15 +52,17 @@ const HeroSection = () => {
                         variants={item}
                         className="text-sm md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed"
                     >
-                        Have a project you want to collaborate on, or looking for a
-                        frontend developer who builds clean, fast, and scalable web
-                        experiences?
+                        Java Developer building reliable backend applications with Java,
+                        Spring Boot, REST APIs, and SQL. I enjoy creating clean,
+                        maintainable solutions to real-world problems.
                     </motion.p>
 
                     {/* CTA */}
                     <motion.div variants={item}>
                         <a
-                            href="#"
+                            href="/Anil_Y_Resume.pdf"
+                            target="_blank"
+                            rel="noreferrer"
                             className="relative inline-flex px-6 py-3 rounded-xl border border-primary/40 text-primary hover:bg-primary/10 transition focus:outline-none focus:ring-2 focus:ring-primary"
                         >
                             View My Resume

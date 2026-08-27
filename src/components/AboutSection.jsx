@@ -27,18 +27,18 @@ const AboutSection = () => {
     const skills = [
         {
             icon: <Code className="h-6 w-6 text-primary" />,
-            title: "Web Development",
-            desc: "Creating responsive websites and web applications with modern frameworks.",
+            title: "Backend Engineering",
+            desc: "Building reliable Java services and maintainable application architecture.",
         },
         {
             icon: <User className="h-6 w-6 text-primary" />,
-            title: "UI/UX Design",
-            desc: "Designing intuitive user interfaces and seamless user experiences.",
+            title: "API Development",
+            desc: "Designing clean REST APIs that connect applications and data securely.",
         },
         {
             icon: <Briefcase className="h-6 w-6 text-primary" />,
-            title: "Project Management",
-            desc: "Planning, organizing, and managing development tasks effectively using Agile methodologies.",
+            title: "Problem Solving",
+            desc: "Breaking down complex requirements into practical, testable solutions.",
         },
     ];
 
@@ -76,15 +76,15 @@ const AboutSection = () => {
                         <div className="space-y-6">
 
                             <motion.h3 variants={item} className="text-3xl md:text-4xl font-semibold">
-                                Frontend Developer
+                                Java Developer
                             </motion.h3>
 
                             <motion.p variants={item} className="max-w-xl text-lg md:text-xl text-muted-foreground leading-relaxed">
-                                I currently specialize in{" "}
-                                <span className="text-primary font-semibold">
-                                    frontend development
-                                </span>
-                                , but my passion lies in building full-stack systems from idea to deployment.
+                                I am a <span className="text-primary font-semibold">Java developer</span> focused on <span className="text-primary font-semibold">backend development</span>, building my expertise in{" "}
+                                Java, Spring Boot, REST APIs,
+                                and SQL to create reliable and maintainable applications. My previous experience
+                                as a <span className="text-primary font-semibold">frontend developer</span>  has given me a strong understanding of user-focused
+                                development and end-to-end application workflows.
                             </motion.p>
 
                         </div>
